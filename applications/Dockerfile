@@ -25,7 +25,7 @@ RUN apt-get update \
  && git config --global user.name "Alexander Baglay" \
  && git config --global user.email "apofig@gmail.com" \
  && cd /tmp \
- && git clone ${GIT_REPO} \
+ && git clone --recursive ${GIT_REPO} \
  && cd /tmp/codenjoy/CodingDojo \
  && git checkout ${REF}
 
