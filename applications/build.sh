@@ -61,8 +61,14 @@ echo "==========================================================================
 
 eval_echo "docker container rm temp --force"
 eval_echo "docker run --name temp -d codenjoy-source tail -f /dev/null"
-eval_echo "docker exec temp bash -c 'cd /tmp/codenjoy && git clean -fx && git reset --hard && git fetch --all && git submodule update --remote --init && git checkout ${REVISION} && git pull --recurse-submodules origin && git status'"
-sleep 5
+eval_echo "docker exec temp bash -c 'cd /tmp/codenjoy && git clean -fx'"
+eval_echo "docker exec temp bash -c 'cd /tmp/codenjoy && git reset --hard'"
+eval_echo "docker exec temp bash -c 'cd /tmp/codenjoy && git fetch --all'"
+eval_echo "docker exec temp bash -c 'cd /tmp/codenjoy && git pull --recurse-submodules origin'"
+eval_echo "docker exec temp bash -c 'cd /tmp/codenjoy && git submodule update --remote --init'"
+eval_echo "docker exec temp bash -c 'cd /tmp/codenjoy && git checkout ${REVISION}'"
+eval_echo "docker exec temp bash -c 'cd /tmp/codenjoy && git status'"
+eval_echo "sleep 5"
 
 echo "[92m========================================================================================================================"
 echo "=============================================== Building codenjoy server ==============================================="
