@@ -5,9 +5,9 @@ How to run server on Ubuntu?
 ----------------------------
 Other options:
 - If you want to run it on windows, you should read
-[how to run the server on Windows](https://github.com/codenjoyme/codenjoy/tree/master/CodingDojo/portable/windows-cmd#windows-portable-script)
+[how to run the server on Windows](https://github.com/codenjoyme/codenjoy-portable-windows.git#windows-portable-script)
 - If you want to run simple version of linex server, you should read 
-[how to run the server on Linux (simple version)](https://github.com/codenjoyme/codenjoy/tree/master/CodingDojo/portable/linux-docker#linux-portable-script-simple-version)
+[how to run the server on Linux (simple version)](https://github.com/codenjoyme/codenjoy-portable-linux-lite.git#linux-portable-script-simple-version)
 
 I prepared to you this script so you can run it on ubuntu server.
 This version uses docker-composer and docker.
@@ -15,7 +15,7 @@ This version uses docker-composer and docker.
 - *[Optional]* Please use [dedicated server](https://contabo.com/?show=configurator&server_id=270)
     for every 300-500 participants or [VPS](https://contabo.com/?show=configurator&vserver_id=229)
     if number of participants is less then 50.
-- copy all files from [this folder](https://github.com/codenjoyme/codenjoy/tree/master/CodingDojo/portable/linux-docker-compose)
+- copy all files from [this subrepo](https://github.com/codenjoyme/codenjoy-portable-linux.git)
     to `/srv/codenjoy` server folder as `root` user
 - *[Optional]* If docker/docker-compose are not installed run
 ```
@@ -41,7 +41,7 @@ docker-compose --version
     * `debug` if you want to debug js files (otherwise it will compress and obfuscate)
     * `yourgame` if you added your custom configuration to the game inside `CodingDojo\games\yourgame\src\main\resources\application-yourgame.yml`
   * `SSL=false` true - if you want to use https instead of http
-    (please copy certificate here [portable/linux-docker-compose/ssl-cert](https://github.com/codenjoyme/codenjoy/tree/master/CodingDojo/portable/linux-docker-compose/ssl-cert))
+    (please copy certificate here [portable/linux-docker-compose/ssl-cert](https://github.com/codenjoyme/codenjoy-portable-linux.git/ssl-cert))
   * `DOMAIN=false` true - if you want use domain instead of IP
   * `OPEN_PORTS=false` true - if you want debug all applications inside containers and want to enable port mapping (ports settings are bellow)
   * `BASIC_AUTH=false` true - if you want to set basic authorization for all game server to disable site before start contest
