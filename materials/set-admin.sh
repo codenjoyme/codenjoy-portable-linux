@@ -1,0 +1,1 @@
+docker exec -i codenjoy-database psql -U codenjoy -c "UPDATE users SET roles='ROLE_ADMIN,ROLE_USER' WHERE email='$1';"
