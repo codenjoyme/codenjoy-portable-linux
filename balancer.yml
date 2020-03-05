@@ -4,7 +4,7 @@ services:
    codenjoy_balancer_frontend:
      depends_on:
        - codenjoy_balancer
-     image: vreshch/codenjoy-lb
+     image: apofig/codenjoy-balancer-frontend
      container_name: codenjoy-balancer-frontend
      volumes:
        - /etc/localtime:/etc/localtime:ro
