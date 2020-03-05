@@ -116,10 +116,9 @@ then
     eval_echo "docker exec temp bash -c 'cd /tmp/codenjoy/CodingDojo/balancer && $MVNW clean install -DskipTests=$SKIP_TESTS' |& tee ./logs/balancer-deploy.log" ;
     eval_echo "docker cp temp:/tmp/codenjoy/CodingDojo/balancer/target/codenjoy-balancer.war ./codenjoy-balancer.war" ;
 	
-	# build balancer-frontend
+    # build balancer-frontend
     eval_echo "rm -rf ./codenjoy-balancer-frontend/*" ;
-	eval_echo "docker cp temp:/tmp/codenjoy/CodingDojo/balancer-frontend/ ./codenjoy-balancer-frontend/" ;
-	eval_echo "sudo docker build -t apofig/codenjoy-balancer-frontend ." ;
+    eval_echo "docker cp temp:/tmp/codenjoy/CodingDojo/balancer-frontend/ ./" ;
 fi
     
 echo "[92m========================================================================================================================"

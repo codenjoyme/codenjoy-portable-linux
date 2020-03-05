@@ -4,8 +4,11 @@ services:
    codenjoy_balancer_frontend:
      depends_on:
        - codenjoy_balancer
-     image: apofig/codenjoy-balancer-frontend
+     image: apofig/codenjoy-balancer-frontend:${CODENJOY_VERSION}
      container_name: codenjoy-balancer-frontend
+     build:
+       context: ./applications/balancer-frontend
+       dockerfile: Dockerfile
      volumes:
        - /etc/localtime:/etc/localtime:ro
 #     ports:                                              #P#
@@ -39,7 +42,7 @@ services:
          DATABASE_PORT: 5432
          DATABASE_NAME: ${CODENJOY_POSTGRES_DB}
          DATABASE_USER: ${CODENJOY_POSTGRES_USER}
-         DATABASE_PASSWORD: ${POSTGRES_PASSWORD}
+         DATABASE_PASSWORD: ${CODENJOY_POSTGRES_PASSWORD}
          ADMIN_PASSWORD: ${ADMIN_PASSWORD}
          EMAIL_HASH: ${EMAIL_HASH}
          SCORE_UPDATE_TIME: 10000
@@ -51,11 +54,11 @@ services:
          DISPATCHER_URL_ENABLED: http://%s/codenjoy-contest/rest/game/enabled/%s/%s
          GAME_TYPE: ${GAME}
          GAME_SERVERS: ${BALANCER_GAME_SERVERS}
-         GAME_ROOM: 10
-         GAME_START_DAY: 2019-01-28
-         GAME_END_DAY: 2019-02-13
-         GAME_FINALISTS_COUNT: 10
-         GAME_FINAL_TIME: 19:00
+         GAME_ROOM: ${BALANCER_GAME_ROOM}
+         GAME_START_DAY: ${BALANCER_GAME_START_DAY}
+         GAME_END_DAY: ${BALANCER_GAME_END_DAY}
+         GAME_FINALISTS_COUNT: ${BALANCER_GAME_FINALISTS_COUNT}
+         GAME_FINAL_TIME: ${BALANCER_GAME_FINAL_TIME}
      networks:
          codenjoy:
              ipv4_address: 172.28.1.3
