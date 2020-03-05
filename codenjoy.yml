@@ -26,7 +26,7 @@ services:
          LOG_DEBUG: "false"
          PAGE_MAIN:
          PAGE_REGISTRATION:
-         PAGE_HELP_LANGUAGE:
+         PAGE_HELP_LANGUAGE: ${PAGE_HELP_LANGUAGE}
          EMAIL_VERIFICATION: "false"
          EMAIL_PASSWORD:
          EMAIL_NAME: info@codenjoy.com

@@ -1,0 +1,9 @@
+applications/codenjoy-balancer-frontend
+applications/logs
+applications/*.war
+config/nginx/.htpasswd
+logs/codenjoy
+logs/docker
+materials/codenjoy
+ssl-cert/*.crt
+ssl-cert/*.key
