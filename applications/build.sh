@@ -119,6 +119,7 @@ then
     # build balancer-frontend
     eval_echo "rm -rf ./codenjoy-balancer-frontend/*" ;
     eval_echo "docker cp temp:/tmp/codenjoy/CodingDojo/balancer-frontend/ ./" ;
+    eval_echo "cp ../.env ./balancer-frontend/" ;
 fi
     
 echo "[92m========================================================================================================================"
