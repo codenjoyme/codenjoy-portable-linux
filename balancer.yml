@@ -52,6 +52,10 @@ services:
          DISPATCHER_URL_CLEAR: http://%s/codenjoy-contest/rest/scores/clear/%s
          DISPATCHER_URL_EXISTS: http://%s/codenjoy-contest/rest/player/%s/exists
          DISPATCHER_URL_ENABLED: http://%s/codenjoy-contest/rest/game/enabled/%s/%s
+         GAME_SERVERS[0].LOCATION: codenjoy_server:8080
+         GAME_SERVERS[0].SCHEMA: http
+         GAME_SERVERS[0].BASIC_AUTH_USER: ${ADMIN_USER}
+         GAME_SERVERS[0].BASIC_AUTH_PASSWORD: ${ADMIN_PASSWORD}
          GAME_TYPE: ${GAME}
          GAME_SERVERS: ${BALANCER_GAME_SERVERS}
          GAME_ROOM: ${BALANCER_GAME_ROOM}
