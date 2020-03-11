@@ -28,7 +28,7 @@ services:
         dockerfile: Dockerfile-balancer
         args:
           WAR_FILE: ./codenjoy-balancer.war
-     command: --spring.profiles.active=${SPRING_PROFILES} --context=/${CODENJOY_CONTEXT} # --debug
+     command: --spring.profiles.active=${SPRING_PROFILES} --context=/${BALANCER_CONTEXT} # --debug
      volumes:
 #       - ./materials/database:/app/database    #L#
        - ./logs/codenjoy:/app/logs
@@ -43,6 +43,7 @@ services:
          DATABASE_NAME: ${CODENJOY_POSTGRES_DB}
          DATABASE_USER: ${CODENJOY_POSTGRES_USER}
          DATABASE_PASSWORD: ${CODENJOY_POSTGRES_PASSWORD}
+         ADMIN_LOGIN: ${ADMIN_USER}
          ADMIN_PASSWORD: ${ADMIN_PASSWORD}
          EMAIL_HASH: ${EMAIL_HASH}
          SCORE_UPDATE_TIME: 10000

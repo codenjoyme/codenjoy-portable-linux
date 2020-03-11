@@ -27,10 +27,12 @@ docker-compose --version
   * `BUILD_SERVER=true` build server sources
   * `BUILD_BALANCER=false` build balancer sources
   * `TIMEZONE=Europe/Kiev` your timezone inside docker containers (for valid time in logs)
+  * `CODENJOY_VERSION=1.1.1` version of docker images  that will be after build
   * `GIT_REPO=https://github.com/codenjoyme/codenjoy.git` git repository you want to build
   * `REVISION=master` revision inside repository (to use master, branch name or revision id)
   * `SKIP_TESTS=true` this will be in the http://your-server.com/codenjoy-contest/
-  * `CODENJOY_CONTEXT=codenjoy-contest`
+  * `CODENJOY_CONTEXT=codenjoy-contest` context of codenjoy server application
+  * `BALANCER_CONTEXT=codenjoy-balancer` context of codenjoy builder application
   * `GAME=tetris,bomberman,snake` games to build
     * comma separated for several games.
     * if empty - all games
@@ -40,6 +42,9 @@ docker-compose --version
     * `trace` for enable log.debug
     * `debug` if you want to debug js files (otherwise it will compress and obfuscate)
     * `yourgame` if you added your custom configuration to the game inside `CodingDojo\games\yourgame\src\main\resources\application-yourgame.yml`
+  * `PAGE_HELP_LANGUAGE=en`
+    * `` for default (russian) version of how to play manuals
+    * `en` for english version of how to play manuals (we will find manual here `/codenjoy-contest/resources/help/game-en.html`)       
   * `SSL=false` true - if you want to use https instead of http
     (please copy certificate here [portable/linux-docker-compose/ssl-cert](https://github.com/codenjoyme/codenjoy-portable-linux.git/ssl-cert))
   * `DOMAIN=false` true - if you want use domain instead of IP
@@ -47,14 +52,15 @@ docker-compose --version
   * `BASIC_AUTH=false` true - if you want to set basic authorization for all game server to disable site before start contest
   * `BASIC_AUTH_LOGIN=codenjoy` basic authorization login
   * `BASIC_AUTH_PASSWORD=secureBasicAuthPassword` basic authorization password
-  * `ADMIN_PASSWORD=secureAdminPassword` this is password for admin page, please keep it secure (`admin@codenjoyme.com` as login)
+  * `ADMIN_USER=admin@codenjoyme.com` this is user namr for admin page, please keep it secure
+  * `ADMIN_PASSWORD=secureAdminPassword` this is password for admin page, please keep it secure
   * `EMAIL_HASH=secureEmailHashSoul` this is used for build code from from password and email, please keep it secure
   * if you select postgres database - you should use this settings
     * `CODENJOY_POSTGRES_DB=codenjoy`
     * `CODENJOY_POSTGRES_USER=codenjoy`
     * `CODENJOY_POSTGRES_PASSWORD=securePostgresDBPassword`
     * `CODENJOY_POSTGRES_PORT=8004` port for codenjoy, works if `OPEN_PORTS` is true
-  * please set `true` if you want to use wordpress at `http://your-server.com/`
+  * please set true if you want to use wordpress at `http://your-server.com/`
     * `WORDPRESS=false`
     * `WORDPRESS_MYSQL_ROOT_PASSWORD=secureWordpressRootDBPassword`
     * `WORDPRESS_MYSQL_DATABASE=wordpress`
@@ -62,7 +68,7 @@ docker-compose --version
     * `WORDPRESS_MYSQL_PASSWORD=secureWordpressDBPassword`
     * `WORDPRESS_PORT=8006` port for wordpress application, works if `OPEN_PORTS` is true
     * `WORDPRESS_MYSQL_PORT=8005` port for wordpress database, works if `OPEN_PORTS` is true
-  * true, if you want to setup pgadmin for postgres on this server
+  * true if you want to setup pgadmin for postgres on this server
     * `PGADMIN=false`
     * `PGADMIN_DEFAULT_PASSWORD=securePGAdminPassword`
     * `PGADMIN_DEFAULT_EMAIL=your@email.com`
@@ -75,6 +81,21 @@ docker-compose --version
     * `BALANCER_PORT=8001` port for balancer backend, works if `OPEN_PORTS` is true
     * `BALANCER_FRONTEND_PORT=8003` port for balancer frontend, works if `OPEN_PORTS` is true
     * `BALANCER_GAME_SERVERS=game1.your.domain.com,game2.your.domain.com,game3.your.domain.com` list of game servers, comma separated, works if `BALANCER` is true
+    * `BALANCER_GAME_ROOM=10` players per one room
+    * `BALANCER_GAME_START_DAY=2020-03-01` game tournament start day
+    * `BALANCER_GAME_END_DAY=2020-03-31` game tournament end day
+    * `BALANCER_GAME_FINALISTS_COUNT=10` day finalists count 
+    * `BALANCER_GAME_FINAL_TIME=19:00` game tournament end time
+  * balancer frontend settings list
+    * `REACT_APP_API_SERVER=https://your-domain.io` Link to balancer backend server (to use `https` when `SSL=true`)
+    * `REACT_APP_EVENT_START=2020-03-01T07:00:00.000Z` game tournament start day/time
+    * `REACT_APP_EVENT_END=2020-03-31T17:00:00.000Z` game tournament end day/time
+    * `REACT_APP_EVENT_LINK=http://your-event.io` Link to event
+    * `REACT_APP_JOIN_CHAT_LINK=https://your-chat.io` Link to chat
+    * `REACT_APP_GA_ID=UA-123456789-1` 
+    * `REACT_APP_FB_PIXEL_ID=123456789012345` facebook pixel
+    * `REACT_APP_IS_SECURE=true` please set true if `SSL=true`
+    * `REACT_APP_IS_UNAVAILABLE=false` please set true if application is unavaliable
   * `CODENJOY=true` if you want to run codenjoy app on this server (only one app `BALANCER` | `CODENJOY` should be)
   * `CODENJOY_PORT=8002` port for codenjoy application, works if `OPEN_PORTS` is true
 - build and start server by command (everytime when you committed new changes)
