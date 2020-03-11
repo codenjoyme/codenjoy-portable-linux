@@ -47,12 +47,6 @@ services:
          ADMIN_PASSWORD: ${ADMIN_PASSWORD}
          EMAIL_HASH: ${EMAIL_HASH}
          SCORE_UPDATE_TIME: 10000
-         DISPATCHER_URL_CREATE: http://%s/codenjoy-contest/rest/player/create/%s
-         DISPATCHER_URL_REMOVE: http://%s/codenjoy-contest/rest/player/%s/remove/%s
-         DISPATCHER_URL_GET: http://%s/codenjoy-contest/rest/game/%s/players
-         DISPATCHER_URL_CLEAR: http://%s/codenjoy-contest/rest/scores/clear/%s
-         DISPATCHER_URL_EXISTS: http://%s/codenjoy-contest/rest/player/%s/exists
-         DISPATCHER_URL_ENABLED: http://%s/codenjoy-contest/rest/game/enabled/%s/%s
          GAME_SERVERS[0].LOCATION: codenjoy_server:8080
          GAME_SERVERS[0].SCHEMA: http
          GAME_SERVERS[0].BASIC_AUTH_USER: ${ADMIN_USER}
