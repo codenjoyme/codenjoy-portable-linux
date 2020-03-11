@@ -131,5 +131,6 @@ eval_echo "docker container rm temp --force"
 
 eval_echo "docker image ls"
 eval_echo "docker ps -a"
+eval_echo "docker network ls"
 
 eval_echo "bash check-revision.sh"
