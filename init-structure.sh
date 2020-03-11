@@ -59,11 +59,6 @@ eval_echo "mkdir -p ./materials/codenjoy/database"
 eval_echo "chown root:root ./materials/codenjoy/database"
 ls -la ./materials/codenjoy/database
 
-# for codenjoy_balancer / codenjoy_contest
-eval_echo "mkdir -p ./config/codenjoy"
-eval_echo "chown root:root ./config/codenjoy"
-ls -la ./config/codenjoy
-
 eval_echo "mkdir -p ./logs/codenjoy"
 # TODO uncomment when fix
 # eval_echo "touch ./logs/codenjoy/codenjoy-balancer.log"
