@@ -78,11 +78,8 @@ MVNW=/tmp/codenjoy/CodingDojo/mvnw
 
 if [ "x$BUILD_SERVER" = "xtrue" ]; then
     if [ "x$GAME" = "x" ]; then 
-        # build all projects
-        eval_echo "docker exec temp bash -c 'cd /tmp/codenjoy/CodingDojo && $MVNW clean install -DskipTests=$SKIP_TESTS' |& tee ./logs/codenjoy-deploy.log" ;
-
-        # build war with all games
-        eval_echo "docker exec temp bash -c 'cd /tmp/codenjoy/CodingDojo/server && $MVNW clean package -DallGames -DskipTests=$SKIP_TESTS' |& tee ./logs/codenjoy-deploy.log" ;
+        # build all projects and server with all games
+        eval_echo "docker exec temp bash -c 'cd /tmp/codenjoy/CodingDojo && $MVNW clean install -DallGames -DskipTests=$SKIP_TESTS' |& tee ./logs/codenjoy-deploy.log" ;
     else
         # build games parent
         eval_echo "docker exec temp bash -c 'cd /tmp/codenjoy/CodingDojo/games && $MVNW clean install -N -DskipTests=$SKIP_TESTS' |& tee ./logs/codenjoy-deploy.log" ;
@@ -93,11 +90,8 @@ if [ "x$BUILD_SERVER" = "xtrue" ]; then
         # build game
         eval_echo "docker exec temp bash -c 'cd /tmp/codenjoy/CodingDojo/games/$GAME && $MVNW clean install -DskipTests=$SKIP_TESTS' |& tee ./logs/codenjoy-deploy.log" ;
 
-        # build server
-        eval_echo "docker exec temp bash -c 'cd /tmp/codenjoy/CodingDojo/server && $MVNW clean install -DskipTests=$SKIP_TESTS' |& tee ./logs/codenjoy-deploy.log" ;
-
         # build war with selected game
-        eval_echo "docker exec temp bash -c 'cd /tmp/codenjoy/CodingDojo/server && $MVNW clean package -P$GAME -DskipTests=$SKIP_TESTS' |& tee ./logs/codenjoy-deploy.log" ;
+        eval_echo "docker exec temp bash -c 'cd /tmp/codenjoy/CodingDojo/server && $MVNW clean install -P$GAME -DskipTests=$SKIP_TESTS' |& tee ./logs/codenjoy-deploy.log" ;
     fi
     eval_echo "docker exec temp bash -c 'cd /tmp/codenjoy/CodingDojo/server/target && ls -la'"
     eval_echo "docker cp temp:/tmp/codenjoy/CodingDojo/server/target/${CODENJOY_CONTEXT}.war ./${CODENJOY_CONTEXT}.war" ;
