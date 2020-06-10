@@ -38,7 +38,6 @@ services:
          DATABASE_PASSWORD: ${CODENJOY_POSTGRES_PASSWORD}
          ADMIN_LOGIN: ${ADMIN_USER}
          ADMIN_PASSWORD: ${ADMIN_PASSWORD}
-         EMAIL_HASH: ${EMAIL_HASH}
          SERVER_IP: ${SERVER_IP}
      networks:
          codenjoy:
