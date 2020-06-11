@@ -17,7 +17,7 @@ MAINTAINER Alexander Baglay <apofig@gmail.com>
 
 ENV DEBIAN_FRONTEND noninteractive
 
-ARG GIT_REPO=https://github.com/codenjoyme/codenjoy.git
+ARG GIT_REPO=https://github.com/codenjoyme/codenjoy.git codenjoy
 ARG REF=master
 
 RUN apt-get update \
