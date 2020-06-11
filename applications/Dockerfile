@@ -17,7 +17,7 @@ MAINTAINER Alexander Baglay <apofig@gmail.com>
 
 ENV DEBIAN_FRONTEND noninteractive
 
-ARG GIT_REPO=https://github.com/codenjoyme/codenjoy.git codenjoy
+ARG GIT_REPO=https://github.com/codenjoyme/codenjoy.git
 ARG REF=master
 
 RUN apt-get update \
@@ -25,7 +25,7 @@ RUN apt-get update \
  && git config --global user.name "Alexander Baglay" \
  && git config --global user.email "apofig@gmail.com" \
  && cd /tmp \
- && git clone --recursive ${GIT_REPO} \
+ && git clone --recursive ${GIT_REPO} codenjoy \
  && cd /tmp/codenjoy/CodingDojo \
  && git checkout ${REF}
 
