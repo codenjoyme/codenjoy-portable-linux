@@ -128,8 +128,6 @@ eval_echo "database ./docker-compose.yml"
 eval_echo "database ./balancer.yml"
 eval_echo "database ./codenjoy.yml"
 
-eval_echo "wordpress ./config/nginx/conf.d/codenjoy.conf"
-
 # -------------------------- BALANCER --------------------------
 
 if [ "x$BALANCER" = "xtrue" ]; then
@@ -146,6 +144,8 @@ balancer() {
     # TODO to solve situation with multiple tags
     if [ "x$BALANCER" = "xtrue" ]; then
         comment $file "#AB#" $BASIC_AUTH
+    else
+        comment $file "#AB#" "false"
     fi
 }
 
@@ -167,6 +167,8 @@ balancerFrontend() {
     # TODO to solve situation with multiple tags
     if [ "x$BALANCER_FRONTEND" = "xtrue" ]; then
         comment $file "#AF#" $BASIC_AUTH
+    else
+        comment $file "#AF#" "false"
     fi
 }
 
@@ -215,6 +217,8 @@ codenjoy() {
     # TODO to solve situation with multiple tags
     if [ "x$CODENJOY" = "xtrue" ]; then
         comment $file "#AC#" $BASIC_AUTH
+    else 
+        comment $file "#AC#" "false"
     fi
 }
 
