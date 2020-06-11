@@ -50,8 +50,7 @@ fi
 
 eval_echo "parameter ./config/nginx/domain.conf 'return 301 https\?://' $SERVER_DOMAIN '\\$'"
 
-eval_echo "parameter ./config/nginx/conf.d/codenjoy-balancer.conf 'server_name ' $SERVER_DOMAIN ';'"
-eval_echo "parameter ./config/nginx/conf.d/codenjoy-contest.conf 'server_name ' $SERVER_DOMAIN ';'"
+eval_echo "parameter ./config/nginx/conf.d/codenjoy.conf 'server_name ' $SERVER_DOMAIN ';'"
 
 domain() {
     file=$1
@@ -79,45 +78,45 @@ basic_auth() {
     comment $file "#A#" $BASIC_AUTH
 }
 
-eval_echo "basic_auth ./config/nginx/conf.d/codenjoy-balancer.conf"
-eval_echo "basic_auth ./config/nginx/conf.d/codenjoy-contest.conf"
+eval_echo "basic_auth ./config/nginx/conf.d/codenjoy.conf"
 eval_echo "basic_auth ./config/nginx/conf.d/wordpress/locations.conf"
 
 # -------------------------- SSL --------------------------
 
+if [ "x$SSL" = "xtrue" ]; then
+    NOT_SSL="false";
+else
+    NOT_SSL="true";
+fi
+
 ssl() {
     file=$1
     comment $file "#S#" $SSL
-    if [ "x$SSL" = "xtrue" ]; then
-        NOT_SSL="false";
-    else
-        NOT_SSL="true";
-    fi
     comment $file "#!S#" $NOT_SSL
 }
 
 eval_echo "ssl ./config/nginx/domain.conf"
-eval_echo "ssl ./config/nginx/conf.d/codenjoy-balancer.conf"
-eval_echo "ssl ./config/nginx/conf.d/codenjoy-contest.conf"
+eval_echo "ssl ./config/nginx/conf.d/codenjoy.conf"
 eval_echo "ssl ./docker-compose.yml"
 
 # -------------------------- DATABASE --------------------------
 
+if [[ "$SPRING_PROFILES" =~ "postgres" ]]; then
+    echo "[93mPostgres[0m";
+    POSTGRE="true";
+    SQLITE="false";
+else
+    echo "[93mSqlite[0m";
+    POSTGRE="false";
+    SQLITE="true";
+fi
+
 database() {
     file=$1
-    if [[ "$SPRING_PROFILES" =~ "postgres" ]]; then
-        echo "[93mPostgres[0m";
-        POSTGRE="true";
-        SQLITE="false";
-    else
-        echo "[93mSqlite[0m";
-        POSTGRE="false";
-        SQLITE="true";
-    fi
     comment $file "#L#" $SQLITE
     comment $file "#!L#" $POSTGRE
 
-    # TODO to solve situation with multiple tags #!LP#
+    # TODO to solve situation with multiple tags
     if [ "x$POSTGRE" = "xtrue" ] && [ "x$OPEN_PORTS" = "xtrue" ]; then
         comment $file "#!LP#" "true"
     else
@@ -129,24 +128,95 @@ eval_echo "database ./docker-compose.yml"
 eval_echo "database ./balancer.yml"
 eval_echo "database ./codenjoy.yml"
 
+eval_echo "wordpress ./config/nginx/conf.d/codenjoy.conf"
+
+# -------------------------- BALANCER --------------------------
+
+if [ "x$BALANCER" = "xtrue" ]; then
+    NOT_BALANCER="false";
+else
+    NOT_BALANCER="true";
+fi
+
+balancer() {
+    file=$1
+    comment $file "#B#" $BALANCER
+    comment $file "#!B#" $NOT_BALANCER
+
+    # TODO to solve situation with multiple tags
+    if [ "x$BALANCER" = "xtrue" ]; then
+        comment $file "#AB#" $BASIC_AUTH
+    fi
+}
+
+eval_echo "balancer ./config/nginx/conf.d/codenjoy.conf"
+
+# ---------------------- BALANCER FRONTEND -----------------------
+
+if [ "x$BALANCER_FRONTEND" = "xtrue" ]; then
+    NOT_BALANCER_FRONTEND="false";
+else
+    NOT_BALANCER_FRONTEND="true";
+fi
+
+balancerFrontend() {
+    file=$1
+    comment $file "#F#" $BALANCER_FRONTEND
+    comment $file "#!F#" $NOT_BALANCER_FRONTEND
+
+    # TODO to solve situation with multiple tags
+    if [ "x$BALANCER_FRONTEND" = "xtrue" ]; then
+        comment $file "#AF#" $BASIC_AUTH
+    fi
+}
+
+eval_echo "balancerFrontend ./config/nginx/conf.d/codenjoy.conf"
+
 # -------------------------- WORDPRESS --------------------------
+
+if [ "x$WORDPRESS" = "xtrue" ]; then
+    NOT_WORDPRESS="false";
+else
+    NOT_WORDPRESS="true";
+fi
 
 wordpress() {
     file=$1
     comment $file "#W#" $WORDPRESS
-    if [ "x$WORDPRESS" = "xtrue" ]; then
-        NOT_WORDPRESS="false";
-    else
-        NOT_WORDPRESS="true";
-    fi
     comment $file "#!W#" $NOT_WORDPRESS
 
-    # TODO to solve situation with multiple tags #S# #!W#
-    if [ "x$NOT_WORDPRESS" = "xtrue" ]; then
-        eval_echo "ssl ./config/nginx/conf.d/codenjoy-contest.conf"
+    # TODO to solve situation with multiple tags
+    if [ "x$NOT_WORDPRESS" = "xtrue" ] && [ "x$NOT_BALANCER_FRONTEND" = "xtrue" ]; then
+        comment $file "#!W!F#" "true"
+        comment $file "#!S!W!F#" $NOT_SSL
+        comment $file "#S!W!F#"  $SSL
+    else
+        comment $file "#!W!F#" "false"
+        comment $file "#!S!W!F#" $NOT_SSL
+        comment $file "#S!W!F#"  $SSL
     fi
 }
 
-eval_echo "wordpress ./config/nginx/conf.d/codenjoy-contest.conf"
+# -------------------------- CODENJOY --------------------------
+
+if [ "x$CODENJOY" = "xtrue" ]; then
+    NOT_CODENJOY="false";
+else
+    NOT_CODENJOY="true";
+fi
+
+codenjoy() {
+    file=$1
+    comment $file "#C#" $CODENJOY
+    comment $file "#!C#" $NOT_CODENJOY
+
+    # TODO to solve situation with multiple tags
+    if [ "x$CODENJOY" = "xtrue" ]; then
+        comment $file "#AC#" $BASIC_AUTH
+    fi
+}
+
+eval_echo "codenjoy ./config/nginx/conf.d/codenjoy.conf"
+
 
 # --------------------------         --------------------------

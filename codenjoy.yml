@@ -39,6 +39,7 @@ services:
          ADMIN_LOGIN: ${ADMIN_USER}
          ADMIN_PASSWORD: ${ADMIN_PASSWORD}
          SERVER_IP: ${SERVER_IP}
+         SERVER_XFRAMEALLOWEDHOSTS: ${SERVER_XFRAMEALLOWEDHOSTS}
      networks:
          codenjoy:
              ipv4_address: 172.28.1.2
@@ -47,4 +48,4 @@ services:
      depends_on:
        - codenjoy_server
      volumes:
-       - ./config/nginx/conf.d/codenjoy-contest.conf:/etc/nginx/conf.d/codenjoy-contest.conf
+       - ./config/nginx/conf.d/codenjoy.conf:/etc/nginx/conf.d/codenjoy.conf
