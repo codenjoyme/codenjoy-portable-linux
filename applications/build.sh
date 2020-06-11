@@ -95,6 +95,7 @@ if [ "x$BUILD_SERVER" = "xtrue" ]; then
     fi
     eval_echo "docker exec temp bash -c 'cd /tmp/codenjoy/CodingDojo/server/target && ls -la'"
     eval_echo "docker cp temp:/tmp/codenjoy/CodingDojo/server/target/${CODENJOY_CONTEXT}.war ./${CODENJOY_CONTEXT}.war" ;
+    ls -la ./${CODENJOY_CONTEXT}.war
 fi
     
 echo "[92m========================================================================================================================"
@@ -108,12 +109,15 @@ then
 
     # build balancer
     eval_echo "docker exec temp bash -c 'cd /tmp/codenjoy/CodingDojo/balancer && $MVNW clean install -DskipTests=$SKIP_TESTS' |& tee ./logs/balancer-deploy.log" ;
-    eval_echo "docker cp temp:/tmp/codenjoy/CodingDojo/balancer/target/codenjoy-balancer.war ./codenjoy-balancer.war" ;
-	
+    eval_echo "docker cp temp:/tmp/codenjoy/CodingDojo/balancer/target/${BALANCER_CONTEXT}.war ./${BALANCER_CONTEXT}.war" ;
+	  ls -la ./${BALANCER_CONTEXT}.war
+
     # build balancer-frontend
     eval_echo "rm -rf ./codenjoy-balancer-frontend/*" ;
     eval_echo "docker cp temp:/tmp/codenjoy/CodingDojo/balancer-frontend/ ./" ;
-    eval_echo "cp ../.env ./balancer-frontend/" ;
+    ls -la ./balancer-frontend/
+    eval_echo "cp ./../.env ./balancer-frontend/" ;
+    ls -la ./balancer-frontend/.env
 fi
     
 echo "[92m========================================================================================================================"
