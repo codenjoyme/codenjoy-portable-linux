@@ -192,10 +192,12 @@ wordpress() {
         comment $file "#S!W!F#"  $SSL
     else
         comment $file "#!W!F#" "false"
-        comment $file "#!S!W!F#" $NOT_SSL
-        comment $file "#S!W!F#"  $SSL
+        comment $file "#!S!W!F#" "false"
+        comment $file "#S!W!F#"  "false"
     fi
 }
+
+eval_echo "wordpress ./config/nginx/conf.d/codenjoy.conf"
 
 # -------------------------- CODENJOY --------------------------
 
@@ -217,6 +219,5 @@ codenjoy() {
 }
 
 eval_echo "codenjoy ./config/nginx/conf.d/codenjoy.conf"
-
 
 # --------------------------         --------------------------
