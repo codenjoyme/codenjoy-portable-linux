@@ -90,7 +90,7 @@ if [ "x$BUILD_SERVER" = "xtrue" ]; then
         # build game
         eval_echo "docker exec temp bash -c 'cd /tmp/codenjoy/CodingDojo/games/$GAME && $MVNW clean install -DskipTests=$SKIP_TESTS' |& tee ./logs/codenjoy-deploy.log" ;
 
-        # build war with selected game
+        # build server with selected game
         eval_echo "docker exec temp bash -c 'cd /tmp/codenjoy/CodingDojo/server && $MVNW clean install -P$GAME -DskipTests=$SKIP_TESTS' |& tee ./logs/codenjoy-deploy.log" ;
     fi
     eval_echo "docker exec temp bash -c 'cd /tmp/codenjoy/CodingDojo/server/target && ls -la'"
