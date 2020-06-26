@@ -67,6 +67,7 @@ eval_echo "docker exec temp bash -c 'cd /tmp/codenjoy && git fetch --all'"
 eval_echo "docker exec temp bash -c 'cd /tmp/codenjoy && git pull --recurse-submodules origin'"
 eval_echo "docker exec temp bash -c 'cd /tmp/codenjoy && git submodule update --remote --init'"
 eval_echo "docker exec temp bash -c 'cd /tmp/codenjoy && git checkout ${REVISION}'"
+eval_echo "docker exec temp bash -c 'cd /tmp/codenjoy && git fetch'"
 eval_echo "docker exec temp bash -c 'cd /tmp/codenjoy && git status'"
 eval_echo "sleep 5"
 

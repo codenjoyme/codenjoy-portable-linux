@@ -1,1 +1,1 @@
-docker exec -i codenjoy-database psql -U codenjoy -c "SELECT s.time, u.readable_name, s.score, s.save FROM saves AS s INNER JOIN users AS u ON u.id = s.name WHERE s.time LIKE '$1%' ORDER BY s.score DESC;"
+docker exec -i codenjoy-database psql -U codenjoy -c "SELECT s.time, u.readable_name, s.score, s.save FROM saves AS s INNER JOIN users AS u ON u.id = s.player_id WHERE s.time LIKE '$1%' ORDER BY s.score DESC;"
