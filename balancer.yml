@@ -38,7 +38,7 @@ services:
      restart: always
      environment:
          LOG_DEBUG: "false"
-         SMS_ENABLED: "true"
+         SMS_ENABLED: ${BALANCER_SMS_ENABLED}
          DATABASE_HOST: codenjoy_db
          DATABASE_PORT: 5432
          DATABASE_NAME: ${CODENJOY_POSTGRES_DB}
