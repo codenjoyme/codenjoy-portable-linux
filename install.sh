@@ -24,5 +24,5 @@ fi
 eval_echo "git clone https://github.com/codenjoyme/codenjoy-portable-linux.git codenjoy"
 eval_echo "cd ./codenjoy"
 
-eval_echo ". update-env.sh"
+eval_echo ". env-update.sh"
 eval_echo ". rebuild.sh"

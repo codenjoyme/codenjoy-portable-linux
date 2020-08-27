@@ -9,21 +9,25 @@ Other options:
 - If you want to run simple version of linex server, you should read 
 [how to run the server on Linux (simple version)](https://github.com/codenjoyme/codenjoy-portable-linux-lite.git#linux-portable-script-simple-version)
 
-I prepared to you this script so you can run it on ubuntu server.
-This version uses docker-composer and docker.
-- make sure that nginx on host machine is disabled.
+I prepared to you this script, so you can run it on ubuntu server.
+The fastest way to run this one line and follow instructions
+```
+cd /srv | wget https://raw.githubusercontent.com/codenjoyme/codenjoy-portable-linux/master/install.sh -O - | sudo -E bash
+```
+Or do it step by step:
 - *[Optional]* Please use [dedicated server](https://contabo.com/?show=configurator&server_id=270)
     for every 300-500 participants or [VPS](https://contabo.com/?show=configurator&vserver_id=229)
     if number of participants is less then 50.
-- copy all files from [this subrepo](https://github.com/codenjoyme/codenjoy-portable-linux.git)
-    to `/srv/codenjoy` server folder as `root` user
-- *[Optional]* If docker/docker-compose are not installed run
+- make sure nginx on host machine is disabled.
+- this version uses docker-composer and docker. If docker/docker-compose are not installed we will do it for you by running this stuff
 ```
 sudo bash setup-docker.sh
 docker-compose --version
 ```
-- edit `.env` [file](https://github.com/codenjoyme/codenjoy/blob/master/CodingDojo/portable/linux-docker-compose/.env)
-  * `CONFIG=true` always true
+- copy all files from [this subrepo](https://github.com/codenjoyme/codenjoy-portable-linux.git)
+    to `/srv/codenjoy` server folder as `root` user
+- edit `.env` [file](https://github.com/codenjoyme/codenjoy/blob/master/CodingDojo/portable/linux-docker-compose/.env) or run `bash env-update.sh` to interactive update
+  * `CONFIG=true` true always
   * `BUILD_SERVER=true` build server sources
   * `BUILD_BALANCER=false` build balancer sources
   * `TIMEZONE=Europe/Kiev` your timezone inside docker containers (for valid time in logs)
