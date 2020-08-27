@@ -30,7 +30,6 @@ do
         value=$new_value
     fi
 
-    sed -i '.env' -e "/^$key=/s/=.*/=$value/"
-
-    echo ""
+    escaped_value=$(printf '%s\n' "$value" | sed -e 's/[\/&]/\\&/g')
+    sed -i '.env' -e "/^$key=/s/=.*/=$escaped_value/"
 done
