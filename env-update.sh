@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo "[94mProcessing '.env' file line by line. Enter the new value, or press ENTER for the default.[0m"
+echo "[93mProcessing '.env' file line by line. Enter the new value, or press ENTER for the default.[0m"
 
 for entry in $(cat ./.env)
 do

@@ -12,7 +12,7 @@ Other options:
 I prepared to you this script, so you can run it on ubuntu server.
 The fastest way to run this one line and follow instructions
 ```
-cd /srv | wget https://raw.githubusercontent.com/codenjoyme/codenjoy-portable-linux/master/install.sh -O - | sudo -E bash
+cd /srv & sudo su -c "bash <(wget -qO- https://raw.githubusercontent.com/codenjoyme/codenjoy-portable-linux/master/install.sh)" root
 ```
 Or do it step by step:
 - *[Optional]* Please use [dedicated server](https://contabo.com/?show=configurator&server_id=270)
