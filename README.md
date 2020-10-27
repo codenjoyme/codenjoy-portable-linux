@@ -27,6 +27,7 @@ docker-compose --version
 - copy all files from [this subrepo](https://github.com/codenjoyme/codenjoy-portable-linux.git)
     to `/srv/codenjoy` server folder as `root` user
 - edit `.env` [file](https://github.com/codenjoyme/codenjoy/blob/master/CodingDojo/portable/linux-docker-compose/.env) or run `bash env-update.sh` to interactive update
+  * **[WARNING] please use only alphanumericals characters [A-Za-z0-9] for passwords. Other characters due to escaping/unescaping may lead to errors in the application.**
   * `CONFIG=true` true always
   * `BUILD_SERVER=true` build server sources
   * `BUILD_BALANCER=false` build balancer sources
@@ -58,7 +59,6 @@ docker-compose --version
   * `BASIC_AUTH_PASSWORD=secureBasicAuthPassword` basic authorization password
   * `ADMIN_USER=admin@codenjoyme.com` this is user namr for admin page, please keep it secure
   * `ADMIN_PASSWORD=secureAdminPassword` this is password for admin page, please keep it secure
-  * `EMAIL_HASH=secureEmailHashSoul` this is used for build code from from password and email, please keep it secure
   * if you select postgres database - you should use this settings
     * `CODENJOY_POSTGRES_DB=codenjoy`
     * `CODENJOY_POSTGRES_USER=codenjoy`
