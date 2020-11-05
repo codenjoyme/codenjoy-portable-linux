@@ -34,6 +34,8 @@ docker-compose --version
   * `TIMEZONE=Europe/Kiev` your timezone inside docker containers (for valid time in logs)
   * `CODENJOY_VERSION=1.1.1` version of docker images  that will be after build
   * `GIT_REPO=https://github.com/codenjoyme/codenjoy.git` git repository you want to build
+  * `MAINTAINER_NAME=FirstName_LastName` Maintainer name (used inside git and docker containers)
+  * `MAINTAINER_EMAIL=user@email.com` Maintainer email (used inside git and docker containers)
   * `REVISION=master` revision inside repository (to use master, branch name or revision id)
   * `SKIP_TESTS=true` this will be in the http://your-server.com/codenjoy-contest/
   * `CODENJOY_CONTEXT=codenjoy-contest` context of codenjoy server application
