@@ -28,6 +28,8 @@ services:
         dockerfile: Dockerfile-balancer
         args:
           WAR_FILE: ./codenjoy-balancer.war
+          MAINTAINER_NAME: ${MAINTAINER_NAME}
+          MAINTAINER_EMAIL: ${MAINTAINER_EMAIL}
      command: --spring.profiles.active=${SPRING_PROFILES} --context=/${BALANCER_CONTEXT} # --debug
      volumes:
 #       - ./materials/database:/app/database    #L#

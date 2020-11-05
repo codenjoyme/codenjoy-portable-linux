@@ -11,6 +11,8 @@ services:
         dockerfile: Dockerfile-contest
         args:
           WAR_FILE: ./codenjoy-contest.war
+          MAINTAINER_NAME: ${MAINTAINER_NAME}
+          MAINTAINER_EMAIL: ${MAINTAINER_EMAIL}
      command: --spring.profiles.active=${SPRING_PROFILES} --context=/${CODENJOY_CONTEXT} # --debug
      volumes:
 #       - ./materials/codenjoy/database:/app/database      #L#

@@ -13,6 +13,8 @@ else
     echo "BUILD_BALANCER=$BUILD_BALANCER"
     echo "TIMEZONE=$TIMEZONE"
     echo "GIT_REPO=$GIT_REPO"
+    echo "MAINTAINER_NAME=$MAINTAINER_NAME"
+    echo "MAINTAINER_EMAIL=$MAINTAINER_EMAIL"
     echo "REVISION=$REVISION"
     echo "GAME=$GAME"
     echo "SKIP_TESTS=$SKIP_TESTS"
@@ -50,7 +52,7 @@ if [[ "$(docker images -q codenjoy-source 2> /dev/null)" == "" ]]; then
     echo "========================================================================================================================[0m" ;
 
     # checkout and build project
-    eval_echo "docker build --target codenjoy_source -t codenjoy-source . --build-arg GIT_REPO=${GIT_REPO} --build-arg REF=${REVISION} |& tee ./logs/codenjoy-source.log" ;
+    eval_echo "docker build --target codenjoy_source -t codenjoy-source . --build-arg GIT_REPO=${GIT_REPO} --build-arg MAINTAINER_NAME=${MAINTAINER_NAME} --build-arg MAINTAINER_EMAIL=${MAINTAINER_EMAIL} --build-arg REF=${REVISION} |& tee ./logs/codenjoy-source.log" ;
 else
     echo "[94mImage codenjoy-source already installed[0m" ;
 fi
