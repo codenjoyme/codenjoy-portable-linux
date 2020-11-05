@@ -1,9 +1,12 @@
 FROM java-workspace
-MAINTAINER Alexander Baglay <apofig@gmail.com>
 
 ARG WAR_FILE=codenjoy-contest.war
 ARG SPRING_PROFILES=sqlite
 ARG CODENJOY_CONTEXT=codenjoy-contest
+
+ARG MAINTAINER_NAME=User
+ARG MAINTAINER_EMAIL=user@email.com
+LABEL maintainer="${MAINTAINER_NAME}"
 
 RUN mkdir -p /app
 
