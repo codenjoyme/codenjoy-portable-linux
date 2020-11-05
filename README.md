@@ -104,6 +104,8 @@ docker-compose --version
     * `REACT_APP_IS_UNAVAILABLE=false` please set true if application is unavaliable
   * `CODENJOY=true` if you want to run codenjoy app on this server (only one app `BALANCER` | `CODENJOY` should be)
   * `CODENJOY_PORT=8002` port for codenjoy application, works if `OPEN_PORTS` is true
+  * `CODENJOY_GAME_AI=true` If you want to launch AI bot in the room with the first participant. So the participant will not be bored to play himself. 
+  * `CODENJOY_XFRAMEALLOWEDHOSTS=domain.com` Domain ot IP of this server. 
 - build and start server by command (everytime when you committed new changes)
 ```
 sudo bash rebuild.sh

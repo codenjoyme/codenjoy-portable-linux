@@ -24,7 +24,7 @@ services:
      environment:
          GAME_SAVE_AUTO: "true"
          BOARD_SAVE_TICKS: 1
-         GAME_AI: "true"
+         GAME_AI: ${CODENJOY_GAME_AI}
          LOG_DEBUG: "false"
          PAGE_MAIN:
          PAGE_REGISTRATION:
@@ -41,7 +41,7 @@ services:
          ADMIN_LOGIN: ${ADMIN_USER}
          ADMIN_PASSWORD: ${ADMIN_PASSWORD}
          SERVER_IP: ${SERVER_IP}
-         SERVER_XFRAMEALLOWEDHOSTS: ${SERVER_XFRAMEALLOWEDHOSTS}
+         SERVER_XFRAMEALLOWEDHOSTS: ${CODENJOY_XFRAMEALLOWEDHOSTS}
      networks:
          codenjoy:
              ipv4_address: 172.28.1.2
