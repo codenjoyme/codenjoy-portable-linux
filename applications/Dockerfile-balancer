@@ -6,7 +6,8 @@ ARG CODENJOY_CONTEXT=codenjoy-balancer
 
 ARG MAINTAINER_NAME=User
 ARG MAINTAINER_EMAIL=user@email.com
-LABEL maintainer="${MAINTAINER_NAME}"
+LABEL maintainer.name="${MAINTAINER_NAME}"
+LABEL maintainer.email="${MAINTAINER_EMAIL}"
 
 RUN mkdir -p /app
 

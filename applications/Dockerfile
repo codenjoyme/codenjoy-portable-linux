@@ -7,7 +7,8 @@ ARG TIMEZONE=Europe/Kiev
 
 ARG MAINTAINER_NAME=User
 ARG MAINTAINER_EMAIL=user@email.com
-LABEL maintainer="${MAINTAINER_NAME}"
+LABEL maintainer.name="${MAINTAINER_NAME}"
+LABEL maintainer.email="${MAINTAINER_EMAIL}"
 
 RUN apt-get update \
  && ln -sf /usr/share/zoneinfo/${TIMEZONE} /etc/localtime \
@@ -24,7 +25,8 @@ ARG REF=master
 
 ARG MAINTAINER_NAME=User
 ARG MAINTAINER_EMAIL=user@email.com
-LABEL maintainer="${MAINTAINER_NAME}"
+LABEL maintainer.name="${MAINTAINER_NAME}"
+LABEL maintainer.email="${MAINTAINER_EMAIL}"
 
 RUN apt-get update \
  && apt-get -y install -y git \
