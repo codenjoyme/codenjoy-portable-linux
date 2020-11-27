@@ -1,4 +1,4 @@
-FROM openjdk:8-jdk as java_workspace
+FROM openjdk:11-jdk as java_workspace
 
 USER root
 ENV DEBIAN_FRONTEND noninteractive
