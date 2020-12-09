@@ -85,14 +85,19 @@ docker-compose --version
   * true if you want to run load balancer on this server
     * `BALANCER=false`
     * `BALANCER_PORT=8001` port for balancer backend, works if `OPEN_PORTS` is true
-    * `BALANCER_FRONTEND_PORT=8003` port for balancer frontend, works if `OPEN_PORTS` is true
+    * `BALANCER_SMS_ENABLED=false` enable sms registration verification
     * `BALANCER_GAME_SERVERS=game1.your.domain.com,game2.your.domain.com,game3.your.domain.com` list of game servers, comma separated, works if `BALANCER` is true
     * `BALANCER_GAME_ROOM=10` players per one room
     * `BALANCER_GAME_START_DAY=2020-03-01` game tournament start day
     * `BALANCER_GAME_END_DAY=2020-03-31` game tournament end day
+    * `BALANCER_GAME_EXCLUDED_DAYS=2020-03-06,2020-03-07` game tournament weekends (comma separated value)
     * `BALANCER_GAME_FINALISTS_COUNT=10` day finalists count 
     * `BALANCER_GAME_FINAL_TIME=19:00` game tournament end time
   * balancer frontend settings list
+    * `BALANCER_FRONTEND=false`
+    * `BALANCER_FRONTEND_PORT=8003` port for balancer frontend, works if `OPEN_PORTS` is true
+    * `NODE_PATH=src/` please do not change it, I don't know what it is )
+    * `GENERATE_SOURCEMAP=false` please do not change it, I don't know what it is )
     * `REACT_APP_API_SERVER=https://your-domain.io` Link to balancer backend server (to use `https` when `SSL=true`)
     * `REACT_APP_EVENT_START=2020-03-01T07:00:00.000Z` game tournament start day/time
     * `REACT_APP_EVENT_END=2020-03-31T17:00:00.000Z` game tournament end day/time
@@ -102,6 +107,14 @@ docker-compose --version
     * `REACT_APP_FB_PIXEL_ID=123456789012345` facebook pixel
     * `REACT_APP_IS_SECURE=true` please set true if `SSL=true`
     * `REACT_APP_IS_UNAVAILABLE=false` please set true if application is unavaliable
+    * `REACT_APP_EVENT_START_DATE=01.03.2020` game tournament start day (info page only)
+    * `REACT_APP_EVENT_END_DATE=31.03.2020` game tournament end day (info page only)
+    * `REACT_APP_EVENT_REGISTER_END_DATE=31.03.2020` game tournament registration end day (info page only)
+    * `REACT_APP_EVENT_START_TIME=09:00` game tournament start time (info page only)
+    * `REACT_APP_EVENT_FINAL_TIME=19:00` game tournament final time (info page only)
+    * `REACT_APP_EVENT_FINALISTS_COUNT=10` day finalists count (info page only)
+    * `REACT_APP_EVENT_ORG_EMAIL=your@email.com` Organizer contact email  
+    * `REACT_APP_SCORES_UPDATE_TIMEOUT=10000` Time in mills to update scores leaderboard page
   * `CODENJOY=true` if you want to run codenjoy app on this server (only one app `BALANCER` | `CODENJOY` should be)
   * `CODENJOY_PORT=8002` port for codenjoy application, works if `OPEN_PORTS` is true
   * `CODENJOY_GAME_AI=true` If you want to launch AI bot in the room with the first participant. So the participant will not be bored to play himself. 
