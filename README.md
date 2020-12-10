@@ -42,7 +42,7 @@ docker-compose --version
   * `BALANCER_CONTEXT=codenjoy-balancer` context of codenjoy builder application
   * `GAME=tetris,bomberman,snake` games to build
     * comma separated for several games.
-    * if empty - all games
+    * if `ALL` - all games
   * `SPRING_PROFILES=postgres,debug` spring profiles, comma separated
     * `sqlite` for the lightweight database (<50 participants)
     * `postgres` for the postgres database (>50 participants)

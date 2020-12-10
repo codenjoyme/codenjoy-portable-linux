@@ -80,7 +80,7 @@ echo "==========================================================================
 MVNW=/tmp/codenjoy/CodingDojo/mvnw
 
 if [ "x$BUILD_SERVER" = "xtrue" ]; then
-    if [ "x$GAME" = "x" ]; then 
+    if [ "x$GAME" = "x" ] || [ "x$GAME" = "xALL" ]; then
         # build all projects and server with all games
         eval_echo "docker exec temp bash -c 'cd /tmp/codenjoy/CodingDojo && $MVNW clean install -DallGames -DskipTests=$SKIP_TESTS' |& tee ./logs/codenjoy-deploy.log" ;
     else

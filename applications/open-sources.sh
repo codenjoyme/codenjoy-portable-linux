@@ -1,5 +1,6 @@
 docker run --name temp -d codenjoy-source
 docker exec -it temp bash
+cd /tmp/codenjoy/
 
 # do your homework
 

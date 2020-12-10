@@ -15,6 +15,10 @@ do
     key=$(echo $entry | awk -F= '{print $1}')
     value=$(echo $entry | awk -F= '{print $2}')
 
+    if [[ $key == *"GAME"* ]]; then
+        echo "# games list (comma separated value) or 'ALL' for all games"
+    fi
+
     if [[ $value == *"Password"* ]]; then
         new_password=$(date +%s | sha256sum | base64 | head -c 32 ; echo)
         value=$new_password
