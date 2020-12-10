@@ -15,7 +15,7 @@ do
     key=$(echo $entry | awk -F= '{print $1}')
     value=$(echo $entry | awk -F= '{print $2}')
 
-    if [[ $key == *"GAME"* ]]; then
+    if [[ $key == "GAME" ]]; then
         echo "# games list (comma separated value) or 'ALL' for all games"
     fi
 
