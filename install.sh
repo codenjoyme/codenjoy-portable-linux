@@ -21,8 +21,10 @@ else
     eval_echo "git --version"
 fi
 
-eval_echo "git clone https://github.com/codenjoyme/codenjoy-portable-linux.git codenjoy"
-eval_echo "cd ./codenjoy"
+folder=${1:=codenjoy}
+
+eval_echo "git clone https://github.com/codenjoyme/codenjoy-portable-linux.git $folder"
+eval_echo "cd ./$folder"
 ls -la
 
 eval_echo ". env-update.sh"

@@ -10,11 +10,11 @@ Other options:
 [how to run the server on Linux (simple version)](https://github.com/codenjoyme/codenjoy-portable-linux-lite.git#linux-portable-script-simple-version)
 
 I prepared to you this script, so you can run it on ubuntu server.
-The fastest way to run this one line and follow instructions
+The fastest way to run this one line and follow instructions (here `codenjoy` - is a folder):
 ```
-cd /srv & sudo su -c "bash <(wget -qO- https://raw.githubusercontent.com/codenjoyme/codenjoy-portable-linux/master/install.sh)" root
+cd /srv & sudo su -c "bash <(wget -qO- https://raw.githubusercontent.com/codenjoyme/codenjoy-portable-linux/master/install.sh) codenjoy" root
 ```
-Or do it step by step:
+or do it step by step:
 - *[Optional]* Please use [dedicated server](https://contabo.com/?show=configurator&server_id=270)
     for every 300-500 participants or [VPS](https://contabo.com/?show=configurator&vserver_id=229)
     if number of participants is less then 50.
