@@ -22,7 +22,8 @@ services:
 #       - "${CODENJOY_PORT}:8080"                           #P#
      restart: always
      environment:
-         GAME_SAVE_AUTO: "true"
+         GAME_SAVE_AUTO: ${CODENJOY_GAME_SAVE_AUTO}
+         GAME_SAVE_LOAD_ON_START: ${CODENJOY_GAME_SAVE_LOAD_ON_START}
          BOARD_SAVE_TICKS: 1
          GAME_AI: ${CODENJOY_GAME_AI}
          LOG_DEBUG: "false"

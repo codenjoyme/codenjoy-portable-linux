@@ -118,6 +118,8 @@ docker-compose --version
   * `CODENJOY=true` if you want to run codenjoy app on this server (only one app `BALANCER` | `CODENJOY` should be)
   * `CODENJOY_PORT=8002` port for codenjoy application, works if `OPEN_PORTS` is true
   * `CODENJOY_GAME_AI=true` If you want to launch AI bot in the room with the first participant. So the participant will not be bored to play himself. 
+  * `CODENJOY_GAME_SAVE_AUTO=true` If you want to save all scores (backup) every 30 ticks. 
+  * `CODENJOY_GAME_SAVE_LOAD_ON_START=true` If you want to load all scores from saves during server starting. 
   * `CODENJOY_XFRAMEALLOWEDHOSTS=domain.com` Domain ot IP of this server. 
 - build and start server by command (everytime when you committed new changes)
 ```
