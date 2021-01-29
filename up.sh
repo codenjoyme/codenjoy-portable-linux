@@ -20,6 +20,11 @@ if [ "x$PGADMIN" = "xtrue" ]; then
     pgadmin="-f pgadmin.yml"
 fi
 
+if [ "x$CLIENT_RUNNER" = "xtrue" ]; then
+    echo "[93mClient runner will start[0m"
+    client_runner="-f client-runner.yml"
+fi
+
 if [ "x$BALANCER" = "xtrue" ]; then
     echo "[93mBalancer will start[0m"
     balancer="-f balancer.yml"
@@ -36,15 +41,16 @@ if [ "x$WORDPRESS" = "xtrue" ]; then
 fi
 
 if [[ "$SPRING_PROFILES" =~ "postgres" ]]; then
-    eval_echo "docker-compose -f docker-compose.yml $balancer $codenjoy $wordpress $pgadmin up -d codenjoy_db"
+    eval_echo "docker-compose -f docker-compose.yml $client_runner $balancer $codenjoy $wordpress $pgadmin up -d codenjoy_db"
     sleep 10
 fi
 
-eval_echo "docker-compose -f docker-compose.yml $balancer $codenjoy $wordpress $pgadmin up -d"
+eval_echo "docker-compose -f docker-compose.yml $client_runner $balancer $codenjoy $wordpress $pgadmin up -d"
 
 eval_echo "date"
 eval_echo "docker exec -it codenjoy-database date"
 eval_echo "docker exec -it codenjoy-contest date"
+eval_echo "docker exec -it codenjoy-client-runner date"
 eval_echo "docker exec -it codenjoy-balancer date"
 eval_echo "docker exec -it nginx date"
 eval_echo "docker exec -it codenjoy-balancer-frontend date"
