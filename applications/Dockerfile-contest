@@ -2,7 +2,7 @@ FROM java-workspace
 
 ARG WAR_FILE=codenjoy-contest.war
 ARG SPRING_PROFILES=sqlite
-ARG CODENJOY_CONTEXT=codenjoy-contest
+ARG APPLICATION_CONTEXT=codenjoy-contest
 
 ARG MAINTAINER_NAME=User
 ARG MAINTAINER_EMAIL=user@email.com
@@ -16,4 +16,4 @@ COPY ${WAR_FILE} /app/server.war
 WORKDIR /app
 
 ENTRYPOINT ["java","-jar","server.war"]
-CMD ["--spring.profiles.active=${SPRING_PROFILES}","--context=/${CODENJOY_CONTEXT}"]
+CMD ["--spring.profiles.active=${SPRING_PROFILES}","--context=/${APPLICATION_CONTEXT}"]
