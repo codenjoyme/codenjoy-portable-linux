@@ -68,6 +68,7 @@ ports() {
 
 eval_echo "ports ./docker-compose.yml"
 eval_echo "ports ./codenjoy.yml"
+eval_echo "ports ./client-runner.yml"
 eval_echo "ports ./balancer.yml"
 eval_echo "ports ./wordpress.yml"
 
