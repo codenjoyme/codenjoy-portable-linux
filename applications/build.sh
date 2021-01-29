@@ -11,6 +11,7 @@ else
     echo "[93m"
     echo "BUILD_SERVER=$BUILD_SERVER"
     echo "BUILD_BALANCER=$BUILD_BALANCER"
+    echo "BUILD_CLIENT_RUNNER=$BUILD_CLIENT_RUNNER"
     echo "TIMEZONE=$TIMEZONE"
     echo "GIT_REPO=$GIT_REPO"
     echo "MAINTAINER_NAME=$MAINTAINER_NAME"
@@ -122,7 +123,19 @@ then
     eval_echo "cp ./../.env ./balancer-frontend/" ;
     ls -la ./balancer-frontend/.env
 fi
-    
+
+echo "[92m========================================================================================================================"
+echo "============================================= Building client runner ==============================================="
+echo "========================================================================================================================[0m"
+
+if [ "x$BUILD_CLIENT_RUNNER" = "xtrue" ] ;
+then
+    # build client-runner
+    eval_echo "docker exec temp bash -c 'cd /tmp/codenjoy/CodingDojo/client-runner && $MVNW clean install -DskipTests=$SKIP_TESTS' |& tee ./logs/client-runner-deploy.log" ;
+    eval_echo "docker cp temp:/tmp/codenjoy/CodingDojo/client-runner/target/${CLIENT_RUNNER_CONTEXT}.war ./${CLIENT_RUNNER_CONTEXT}.war" ;
+	  ls -la ./${CLIENT_RUNNER_CONTEXT}.war
+fi
+
 echo "[92m========================================================================================================================"
 echo "=================================================== Cleaning stuff ===================================================="
 echo "========================================================================================================================[0m"

@@ -1,0 +1,36 @@
+version: '3.3'
+
+services:
+   codenjoy_client_runner:
+     image: apofig/codenjoy-client-runner:${CODENJOY_VERSION}
+     container_name: codenjoy-client-runner
+     command: --context=/${CLIENT_RUNNER_CONTEXT} # --debug
+     build:
+       context: ./applications
+       dockerfile: Dockerfile-client-runner
+       args:
+         WAR_FILE: ./codenjoy-client-runner.war
+         MAINTAINER_NAME: ${MAINTAINER_NAME}
+         MAINTAINER_EMAIL: ${MAINTAINER_EMAIL}
+     volumes:
+       - ./materials/client-runner/sources:/app/${CLIENT_RUNNER_SOLUTION_FOLDER_PATH}
+       - ./logs/clint-runner:/app/logs
+       - /etc/localtime:/etc/localtime:ro
+#     ports:                                              #P#
+#       - "${CLIENT_RUNNER_PORT}:8080"                    #P#
+     restart: always
+     environment:
+         LOG_DEBUG: "false"
+         SERVICE_SOLUTION_FOLDER_PATH: ${CLIENT_RUNNER_SOLUTION_FOLDER_PATH}
+         SERVICE_SOLUTION_FOLDER_PATTERN: ${CLIENT_RUNNER_SOLUTION_FOLDER_PATTERN}
+         SERVICE_CODENJOY_URL_REGEX: ${CLIENT_RUNNER_CODENJOY_URL_REGEX}
+
+     networks:
+         codenjoy:
+             ipv4_address: 172.28.1.9
+
+   nginx:
+     depends_on:
+       - codenjoy_balancer
+     volumes: 
+       - ./config/nginx/conf.d/codenjoy.conf:/etc/nginx/conf.d/codenjoy.conf

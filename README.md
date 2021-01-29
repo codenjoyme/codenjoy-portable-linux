@@ -31,6 +31,7 @@ docker-compose --version
   * `CONFIG=true` true always
   * `BUILD_SERVER=true` build server sources
   * `BUILD_BALANCER=false` build balancer sources
+  * `BUILD_CLIENT_RUNNER=false` build websocket client runner sources
   * `TIMEZONE=Europe/Kiev` your timezone inside docker containers (for valid time in logs)
   * `CODENJOY_VERSION=1.1.1` version of docker images  that will be after build
   * `GIT_REPO=https://github.com/codenjoyme/codenjoy.git` git repository you want to build
@@ -40,6 +41,7 @@ docker-compose --version
   * `SKIP_TESTS=true` this will be in the http://your-server.com/codenjoy-contest/
   * `CODENJOY_CONTEXT=codenjoy-contest` context of codenjoy server application
   * `BALANCER_CONTEXT=codenjoy-balancer` context of codenjoy builder application
+  * `CLIENT_RUNNER_CONTEXT=codenjoy-client-runner` context of codenjoy websocket client runner application
   * `GAME=tetris,bomberman,snake` games to build
     * comma separated for several games.
     * if `ALL` - all games
@@ -82,6 +84,12 @@ docker-compose --version
   * domain settings (if `DOMAIN=false` please ignore this option) (uses in nginx setup)
   * `SERVER_IP=79.143.176.243` your IP
   * `SERVER_DOMAIN=your-domain.com` your domain
+  * true if you want to run load websocket client runner on this server
+      * `CLIENT_RUNNER=false`
+      * `CLIENT_RUNNER_PORT=8009` port for this application, works if `OPEN_PORTS` is true 
+      * `CLIENT_RUNNER_SOLUTION_FOLDER_PATH=./solutions` sources folder inside application forlder (in docker contsiner) 
+      * `CLIENT_RUNNER_SOLUTION_FOLDER_PATTERN=dd-MM-yyyy'T'HH_mm_ss` sources timestamp folder pattern
+      * `CLIENT_RUNNER_CODENJOY_URL_REGEX=^http://domain.com/codenjoy-contest/board/player/([\\w]+)\\?code=([\\w]+)` websocket client connection url pattern
   * true if you want to run load balancer on this server
     * `BALANCER=false`
     * `BALANCER_PORT=8001` port for balancer backend, works if `OPEN_PORTS` is true

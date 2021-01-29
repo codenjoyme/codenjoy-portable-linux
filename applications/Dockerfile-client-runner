@@ -1,0 +1,19 @@
+FROM java-workspace
+
+ARG WAR_FILE=codenjoy-client-runner.war
+ARG SPRING_PROFILES=sqlite
+ARG CODENJOY_CONTEXT=codenjoy-client-runner
+
+ARG MAINTAINER_NAME=User
+ARG MAINTAINER_EMAIL=user@email.com
+LABEL maintainer.name="${MAINTAINER_NAME}"
+LABEL maintainer.email="${MAINTAINER_EMAIL}"
+
+RUN mkdir -p /app
+
+COPY ${WAR_FILE} /app/server.war
+
+WORKDIR /app
+
+ENTRYPOINT ["java","-jar","server.war"]
+CMD ["--spring.profiles.active=${SPRING_PROFILES}","--context=/${CODENJOY_CONTEXT}"]

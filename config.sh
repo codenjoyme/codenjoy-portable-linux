@@ -128,6 +128,30 @@ eval_echo "database ./docker-compose.yml"
 eval_echo "database ./balancer.yml"
 eval_echo "database ./codenjoy.yml"
 
+
+# -------------------------- CLIENT RUNNER --------------------------
+
+if [ "x$CLIENT_RUNNER" = "xtrue" ]; then
+    NOT_CLIENT_RUNNER="false";
+else
+    NOT_CLIENT_RUNNER="true";
+fi
+
+client-runner() {
+    file=$1
+    comment $file "#R#" $CLIENT_RUNNER
+    comment $file "#!R#" $NOT_CLIENT_RUNNER
+
+    # TODO to solve situation with multiple tags
+    if [ "x$CLIENT_RUNNER" = "xtrue" ]; then
+        comment $file "#AR#" $BASIC_AUTH
+    else
+        comment $file "#AR#" "false"
+    fi
+}
+
+eval_echo "client-runner ./config/nginx/conf.d/codenjoy.conf"
+
 # -------------------------- BALANCER --------------------------
 
 if [ "x$BALANCER" = "xtrue" ]; then
