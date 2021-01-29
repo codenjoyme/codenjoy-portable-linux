@@ -31,6 +31,6 @@ services:
 
    nginx:
      depends_on:
-       - codenjoy_balancer
+       - codenjoy_client_runner
      volumes: 
        - ./config/nginx/conf.d/codenjoy.conf:/etc/nginx/conf.d/codenjoy.conf
