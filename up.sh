@@ -15,6 +15,8 @@ fi
 
 eval_echo "docker-compose down --remove-orphans"
 
+echo ""
+
 if [ "x$PGADMIN" = "xtrue" ]; then
     echo "[93mWARNING: PGAdmin will start on port $PGADMIN_PORT[0m"
     pgadmin="-f pgadmin.yml"
