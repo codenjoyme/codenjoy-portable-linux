@@ -36,6 +36,7 @@ eval_echo "cd $DIR/applications && bash build.sh"
 eval_echo "docker container rm $(docker ps -a | grep -v 'CONTAINER' | cut -d ' ' -f1) --force"
 eval_echo "docker network prune --force"
 eval_echo "docker rmi apofig/codenjoy-contest:${CODENJOY_VERSION} --force"
+eval_echo "docker rmi apofig/codenjoy-client-runner:${CODENJOY_VERSION} --force"
 eval_echo "docker rmi apofig/codenjoy-balancer:${CODENJOY_VERSION} --force"
 eval_echo "docker rmi apofig/codenjoy-balancer-frontend:${CODENJOY_VERSION} --force"
 
