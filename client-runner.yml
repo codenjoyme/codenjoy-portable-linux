@@ -15,6 +15,7 @@ services:
      volumes:
        - ./materials/client-runner/sources:/app/${CLIENT_RUNNER_SOLUTION_FOLDER_PATH}
        - ./logs/client-runner:/app/logs
+       - /var/run/docker.sock:/var/run/docker.sock:rw
        - /etc/localtime:/etc/localtime:ro
 #     ports:                                              #P#
 #       - "${CLIENT_RUNNER_PORT}:8080"                    #P#

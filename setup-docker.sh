@@ -27,16 +27,23 @@ echo "================================================== Installing Docker =====
 echo "========================================================================================================================[0m"
 
 # setup docker
-eval_echo "sudo apt-get remove docker docker-engine docker.io containerd runc"
-eval_echo "sudo apt-get -y update"
+eval_echo "apt-get remove docker docker-engine docker.io containerd runc"
+eval_echo "apt-get -y update"
 eval_echo "curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -"
-eval_echo "sudo apt-key fingerprint 0EBFCD88"
-eval_echo 'sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"'
-eval_echo "sudo apt-get update -y"
-eval_echo "sudo apt-get install docker-ce docker-ce-cli containerd.io"
-eval_echo "sudo systemctl status docker --no-pager"
-eval_echo "sudo usermod -aG docker $USER"
-eval_echo "sudo docker -v"
+eval_echo "apt-key fingerprint 0EBFCD88"
+
+# for debian alpine
+# eval_echo 'apt-get install -y software-properties-common'
+# eval_echo 'add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(dpkg --status tzdata|grep Provides|cut -f2 -d'-') stable"'
+
+# for ubuntu
+eval_echo 'add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"'
+
+eval_echo "apt-get update -y"
+eval_echo "apt-get install docker-ce docker-ce-cli containerd.io -y"
+eval_echo "systemctl status docker --no-pager"
+eval_echo "usermod -aG docker $USER"
+eval_echo "docker -v"
 	
 # setup compose
 eval_echo "curl -L 'https://github.com/docker/compose/releases/download/1.24.1/docker-compose-$(uname -s)-$(uname -m)' -o /usr/local/bin/docker-compose"

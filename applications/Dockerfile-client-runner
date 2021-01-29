@@ -1,4 +1,24 @@
-FROM java-workspace
+FROM java-workspace as dockerized-java-workspace
+
+USER root
+ENV DEBIAN_FRONTEND noninteractive
+
+ARG MAINTAINER_NAME=User
+ARG MAINTAINER_EMAIL=user@email.com
+LABEL maintainer.name="${MAINTAINER_NAME}"
+LABEL maintainer.email="${MAINTAINER_EMAIL}"
+
+RUN curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add - \
+ && apt-key fingerprint 0EBFCD88 \
+ && apt-get -y install software-properties-common \
+ && add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(dpkg --status tzdata|grep Provides|cut -f2 -d'-') stable" \
+ && apt-get -y update \
+ && apt-get -y install docker-ce \
+ && docker -v
+
+# -----------------------------------------------------------------------
+
+FROM dockerized-java-workspace
 
 ARG WAR_FILE=codenjoy-client-runner.war
 ARG SPRING_PROFILES=
@@ -17,3 +37,5 @@ WORKDIR /app
 
 ENTRYPOINT ["java","-jar","server.war"]
 CMD ["--spring.profiles.active=${SPRING_PROFILES}","--context=/${APPLICATION_CONTEXT}"]
+
+# -----------------------------------------------------------------------
