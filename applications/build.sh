@@ -5,22 +5,23 @@ echo "==========================================================================
 
 if [ "x$GIT_REPO" = "x" ]; then
     cd ..
+    . ./dir.sh
     . ./config.sh 
     cd ./applications
-else
-    echo "[93m"
-    echo "BUILD_SERVER=$BUILD_SERVER"
-    echo "BUILD_BALANCER=$BUILD_BALANCER"
-    echo "BUILD_CLIENT_RUNNER=$BUILD_CLIENT_RUNNER"
-    echo "TIMEZONE=$TIMEZONE"
-    echo "GIT_REPO=$GIT_REPO"
-    echo "MAINTAINER_NAME=$MAINTAINER_NAME"
-    echo "MAINTAINER_EMAIL=$MAINTAINER_EMAIL"
-    echo "REVISION=$REVISION"
-    echo "GAME=$GAME"
-    echo "SKIP_TESTS=$SKIP_TESTS"
-    echo "[0m"
 fi
+
+echo "[93m"
+echo "BUILD_SERVER=$BUILD_SERVER"
+echo "BUILD_BALANCER=$BUILD_BALANCER"
+echo "BUILD_CLIENT_RUNNER=$BUILD_CLIENT_RUNNER"
+echo "TIMEZONE=$TIMEZONE"
+echo "GIT_REPO=$GIT_REPO"
+echo "MAINTAINER_NAME=$MAINTAINER_NAME"
+echo "MAINTAINER_EMAIL=$MAINTAINER_EMAIL"
+echo "REVISION=$REVISION"
+echo "GAME=$GAME"
+echo "SKIP_TESTS=$SKIP_TESTS"
+echo "[0m"
 
 eval_echo() {
     to_run=$1
