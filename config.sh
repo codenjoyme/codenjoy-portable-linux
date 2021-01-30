@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-DIR="$( cd "$( dirname "$0" )" && pwd )"
-
 eval_echo() {
     echo "[92m"
     echo $1
@@ -16,6 +14,7 @@ eval_echo2() {
     eval $1
 }
 
+eval_echo ". dir.sh"
 eval_echo ". env-read.sh"
 
 comment() {
