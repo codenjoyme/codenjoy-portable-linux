@@ -22,6 +22,7 @@ echo "[93m"
 echo "Work in: $DIR"
 echo "[0m"
 
+eval_echo ". dir.sh"
 eval_echo ". config.sh"
 
 eval_echo "bash init-structure.sh"
@@ -31,7 +32,7 @@ eval_echo "bash init-structure.sh"
 
 eval_echo "cd $DIR/logs && bash get-docker-compose-logs.sh"
 
-eval_echo "cd $DIR/applications && bash build.sh"
+eval_echo "cd $DIR/applications && . build.sh"
 
 eval_echo "docker container rm $(docker ps -a | grep -v 'CONTAINER' | cut -d ' ' -f1) --force"
 eval_echo "docker network prune --force"
