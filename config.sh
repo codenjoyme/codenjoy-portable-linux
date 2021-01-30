@@ -14,7 +14,6 @@ eval_echo2() {
     eval $1
 }
 
-eval_echo ". dir.sh"
 eval_echo ". env-read.sh"
 
 comment() {
