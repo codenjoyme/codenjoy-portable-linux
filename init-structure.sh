@@ -54,6 +54,11 @@ ls -la ./ssl-cert
 eval_echo "chown root:root ./config/nginx/*"
 ls -la ./config/nginx
 
+# maven
+eval_echo "mkdir -p ./materials/maven"
+eval_echo "chown root:root ./materials/maven"
+ls -la ./materials/maven
+
 # database
 eval_echo "mkdir -p ./materials/codenjoy/database"
 eval_echo "chown root:root ./materials/codenjoy/database"

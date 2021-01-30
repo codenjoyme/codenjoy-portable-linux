@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+DIR="$( cd "$( dirname "$0" )" && pwd )"
+
 eval_echo() {
     echo "[92m"
     echo $1

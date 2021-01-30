@@ -63,7 +63,7 @@ echo "=============================================== Checking out last version 
 echo "========================================================================================================================[0m"
 
 eval_echo "docker container rm temp --force"
-eval_echo "docker run --name temp -d codenjoy-source tail -f /dev/null"
+eval_echo "docker run --name temp -v $DIR/materials/maven:/root/.m2 -d codenjoy-source tail -f /dev/null"
 eval_echo "docker exec temp bash -c 'cd /tmp/codenjoy && git clean -fx'"
 eval_echo "docker exec temp bash -c 'cd /tmp/codenjoy && git reset --hard'"
 eval_echo "docker exec temp bash -c 'cd /tmp/codenjoy && git fetch --all'"
@@ -73,6 +73,7 @@ eval_echo "docker exec temp bash -c 'cd /tmp/codenjoy && git checkout ${REVISION
 eval_echo "docker exec temp bash -c 'cd /tmp/codenjoy && git fetch'"
 eval_echo "docker exec temp bash -c 'cd /tmp/codenjoy && git status'"
 eval_echo "sleep 5"
+eval_echo "docker commit temp codenjoy-source"
 
 echo "[92m========================================================================================================================"
 echo "=============================================== Building codenjoy server ==============================================="
@@ -140,7 +141,6 @@ echo "[92m=====================================================================
 echo "=================================================== Cleaning stuff ===================================================="
 echo "========================================================================================================================[0m"
 
-eval_echo "docker commit temp codenjoy-source"
 eval_echo "docker container rm temp --force"
 
 eval_echo "docker image ls"
