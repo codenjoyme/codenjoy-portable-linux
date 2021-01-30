@@ -73,13 +73,18 @@ eval_echo "docker exec temp bash -c 'cd /tmp/codenjoy && git checkout ${REVISION
 eval_echo "docker exec temp bash -c 'cd /tmp/codenjoy && git fetch'"
 eval_echo "docker exec temp bash -c 'cd /tmp/codenjoy && git status'"
 eval_echo "sleep 5"
+
+echo "[92m========================================================================================================================"
+echo "=============================================== Save sources after update ==============================================="
+echo "========================================================================================================================[0m"
+
+MVNW=/tmp/codenjoy/CodingDojo/mvnw
+eval_echo "docker exec temp bash -c 'cd /tmp/codenjoy/CodingDojo && $MVNW clean'"
 eval_echo "docker commit temp codenjoy-source"
 
 echo "[92m========================================================================================================================"
 echo "=============================================== Building codenjoy server ==============================================="
 echo "========================================================================================================================[0m"
-
-MVNW=/tmp/codenjoy/CodingDojo/mvnw
 
 if [ "x$BUILD_SERVER" = "xtrue" ]; then
     if [ "x$GAME" = "x" ] || [ "x$GAME" = "xALL" ]; then
