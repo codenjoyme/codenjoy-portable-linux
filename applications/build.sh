@@ -31,7 +31,7 @@ eval_echo() {
     eval $to_run
 }
 
-eval_echo ". ./dir.sh"
+eval_echo ". ./../dir.sh"
 
 rm -rf ./logs
 mkdir ./logs
