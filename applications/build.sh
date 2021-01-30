@@ -10,6 +10,11 @@ if [ "x$GIT_REPO" = "x" ]; then
     cd ./applications
 fi
 
+if [ "x$GIT_REPO" = "x" ]; then
+    then echo "[91mPlease run this script from its folder[0m"
+    exit
+fi
+
 echo "[93m"
 echo "BUILD_SERVER=$BUILD_SERVER"
 echo "BUILD_BALANCER=$BUILD_BALANCER"
