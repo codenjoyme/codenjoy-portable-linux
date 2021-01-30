@@ -11,7 +11,7 @@ if [ "x$GIT_REPO" = "x" ]; then
 fi
 
 if [ "x$GIT_REPO" = "x" ]; then
-    then echo "[91mPlease run this script from its folder[0m"
+    echo "[91mPlease run this script from its folder[0m"
     exit
 fi
 
