@@ -49,7 +49,7 @@ if [[ "$(docker images -q java-workspace 2> /dev/null)" == "" ]]; then
     # prepare java-workspace image update system && set timezone
     eval_echo "docker build --target java_workspace -t java-workspace . --build-arg TIMEZONE=${TIMEZONE} |& tee ./logs/java-workspace.log" ;
 else
-    echo "[94mImage java-workspace already installed[0m" ;
+    echo "[93mImage java-workspace already installed[0m" ;
 fi
 
 # checkout if needed
@@ -61,7 +61,7 @@ if [[ "$(docker images -q codenjoy-source 2> /dev/null)" == "" ]]; then
     # checkout and build project
     eval_echo "docker build --target codenjoy_source -t codenjoy-source . --build-arg GIT_REPO=${GIT_REPO} --build-arg MAINTAINER_NAME=${MAINTAINER_NAME} --build-arg MAINTAINER_EMAIL=${MAINTAINER_EMAIL} --build-arg REF=${REVISION} |& tee ./logs/codenjoy-source.log" ;
 else
-    echo "[94mImage codenjoy-source already installed[0m" ;
+    echo "[93mImage codenjoy-source already installed[0m" ;
 fi
 
 echo "[92m========================================================================================================================"
@@ -147,7 +147,7 @@ then
         # prepare dockerized-java-workspace
         eval_echo "docker build --target dockerized_java_workspace -t dockerized-java-workspace . |& tee ./logs/dockerized-java-workspace.log" ;
     else
-        echo "[94mImage dockerized-java-workspace already installed[0m" ;
+        echo "[93mImage dockerized-java-workspace already installed[0m" ;
     fi
 
     # build client-runner
