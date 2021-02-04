@@ -27,8 +27,12 @@ if [ "x$CODENJOY" = "xtrue" ]; then
     codenjoy="-f codenjoy.yml"
 fi
 
+if [ "x$CLIENT_RUNNER" = "xtrue" ]; then
+    client_runner="-f client-runner.yml"
+fi
+
 if [ "x$WORDPRESS" = "xtrue" ]; then
     wordpress="-f wordpress.yml"
 fi
 
-eval_echo "docker-compose -f docker-compose.yml $balancer $codenjoy $wordpress $pgadmin logs $service"
+eval_echo "docker-compose -f docker-compose.yml $balancer $codenjoy $client_runner $wordpress $pgadmin logs $service"

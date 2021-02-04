@@ -41,10 +41,12 @@ eval_echo "mkdir ./docker/"
 eval_echo "save_log 'codenjoy-balancer' $now"
 eval_echo "save_log 'codenjoy-database' $now"
 eval_echo "save_log 'codenjoy-contest' $now"
+eval_echo "save_log 'codenjoy-client-runner' $now"
 eval_echo "save_log 'nginx' $now"
 eval_echo "save_log 'codenjoy-balancer-frontend' $now"
-eval_echo "save_log 'mycgi' $now"
 eval_echo "save_log 'pgadmin' $now"
+eval_echo "save_log 'wordpress' $now"
+eval_echo "save_log 'wordpress-database' $now"
 
 eval_echo "chown alex:alex ./docker/$now"
 
