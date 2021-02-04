@@ -1,4 +1,4 @@
-FROM java-workspace as dockerized-java-workspace
+FROM java-workspace as dockerized_java_workspace
 
 USER root
 ENV DEBIAN_FRONTEND noninteractive
@@ -18,7 +18,7 @@ RUN curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add - \
 
 # -----------------------------------------------------------------------
 
-FROM dockerized-java-workspace
+FROM dockerized-java-workspace as codenjoy_client_runner
 
 ARG WAR_FILE=codenjoy-client-runner.war
 ARG SPRING_PROFILES=

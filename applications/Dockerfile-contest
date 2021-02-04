@@ -1,4 +1,4 @@
-FROM java-workspace
+FROM java-workspace as codenjoy_contest
 
 ARG WAR_FILE=codenjoy-contest.war
 ARG SPRING_PROFILES=sqlite

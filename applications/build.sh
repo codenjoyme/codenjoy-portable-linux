@@ -142,6 +142,14 @@ echo "==========================================================================
 
 if [ "x$BUILD_CLIENT_RUNNER" = "xtrue" ] ;
 then
+    # build dockerized-java-workspace
+    if [[ "$(docker images -q dockerized-java-workspace 2> /dev/null)" == "" ]]; then
+        # prepare dockerized-java-workspace
+        eval_echo "docker build --target dockerized_java_workspace -t dockerized-java-workspace . |& tee ./logs/dockerized-java-workspace.log" ;
+    else
+        echo "[94mImage dockerized-java-workspace already installed[0m" ;
+    fi
+
     # build client-runner
     eval_echo "docker exec temp bash -c 'cd /tmp/codenjoy/CodingDojo/client-runner && $MVNW clean install -DskipTests=$SKIP_TESTS' |& tee ./logs/client-runner-deploy.log" ;
     eval_echo "docker cp temp:/tmp/codenjoy/CodingDojo/client-runner/target/${CLIENT_RUNNER_CONTEXT}.war ./${CLIENT_RUNNER_CONTEXT}.war" ;
