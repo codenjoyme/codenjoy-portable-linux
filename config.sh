@@ -50,7 +50,7 @@ fi
 
 eval_echo "parameter ./config/nginx/domain.conf 'return 301 https\?://' $SERVER_DOMAIN '\\$'"
 
-eval_echo "parameter ./config/nginx/conf.d/codenjoy.conf 'server_name ' $SERVER_DOMAIN ';'"
+eval_echo "parameter ./config/nginx/conf.d/applications.conf 'server_name ' $SERVER_DOMAIN ';'"
 
 domain() {
     file=$1
@@ -79,7 +79,10 @@ basic_auth() {
     comment $file "#A#" $BASIC_AUTH
 }
 
-eval_echo "basic_auth ./config/nginx/conf.d/codenjoy.conf"
+eval_echo "basic_auth ./config/nginx/conf.d/codenjoy/locations.conf"
+eval_echo "basic_auth ./config/nginx/conf.d/balancer/locations.conf"
+eval_echo "basic_auth ./config/nginx/conf.d/balancer-frontend/locations.conf"
+eval_echo "basic_auth ./config/nginx/conf.d/client-runner/locations.conf"
 eval_echo "basic_auth ./config/nginx/conf.d/wordpress/locations.conf"
 
 # -------------------------- SSL --------------------------
@@ -97,7 +100,8 @@ ssl() {
 }
 
 eval_echo "ssl ./config/nginx/domain.conf"
-eval_echo "ssl ./config/nginx/conf.d/codenjoy.conf"
+eval_echo "ssl ./config/nginx/conf.d/applications.conf"
+eval_echo "ssl ./config/nginx/conf.d/codenjoy/locations.conf"
 eval_echo "ssl ./docker-compose.yml"
 
 # -------------------------- DATABASE --------------------------
@@ -142,16 +146,9 @@ client-runner() {
     file=$1
     comment $file "#R#" $CLIENT_RUNNER
     comment $file "#!R#" $NOT_CLIENT_RUNNER
-
-    # TODO to solve situation with multiple tags
-    if [ "x$CLIENT_RUNNER" = "xtrue" ]; then
-        comment $file "#AR#" $BASIC_AUTH
-    else
-        comment $file "#AR#" "false"
-    fi
 }
 
-eval_echo "client-runner ./config/nginx/conf.d/codenjoy.conf"
+eval_echo "client-runner ./config/nginx/conf.d/applications.conf"
 
 # -------------------------- BALANCER --------------------------
 
@@ -165,16 +162,9 @@ balancer() {
     file=$1
     comment $file "#B#" $BALANCER
     comment $file "#!B#" $NOT_BALANCER
-
-    # TODO to solve situation with multiple tags
-    if [ "x$BALANCER" = "xtrue" ]; then
-        comment $file "#AB#" $BASIC_AUTH
-    else
-        comment $file "#AB#" "false"
-    fi
 }
 
-eval_echo "balancer ./config/nginx/conf.d/codenjoy.conf"
+eval_echo "balancer ./config/nginx/conf.d/applications.conf"
 
 # ---------------------- BALANCER FRONTEND -----------------------
 
@@ -188,16 +178,9 @@ balancerFrontend() {
     file=$1
     comment $file "#F#" $BALANCER_FRONTEND
     comment $file "#!F#" $NOT_BALANCER_FRONTEND
-
-    # TODO to solve situation with multiple tags
-    if [ "x$BALANCER_FRONTEND" = "xtrue" ]; then
-        comment $file "#AF#" $BASIC_AUTH
-    else
-        comment $file "#AF#" "false"
-    fi
 }
 
-eval_echo "balancerFrontend ./config/nginx/conf.d/codenjoy.conf"
+eval_echo "balancerFrontend ./config/nginx/conf.d/applications.conf"
 
 # -------------------------- WORDPRESS --------------------------
 
@@ -211,20 +194,9 @@ wordpress() {
     file=$1
     comment $file "#W#" $WORDPRESS
     comment $file "#!W#" $NOT_WORDPRESS
-
-    # TODO to solve situation with multiple tags
-    if [ "x$NOT_WORDPRESS" = "xtrue" ] && [ "x$NOT_BALANCER_FRONTEND" = "xtrue" ]; then
-        comment $file "#!W!F#" "true"
-        comment $file "#!S!W!F#" $NOT_SSL
-        comment $file "#S!W!F#"  $SSL
-    else
-        comment $file "#!W!F#" "false"
-        comment $file "#!S!W!F#" "false"
-        comment $file "#S!W!F#"  "false"
-    fi
 }
 
-eval_echo "wordpress ./config/nginx/conf.d/codenjoy.conf"
+eval_echo "wordpress ./config/nginx/conf.d/applications.conf"
 
 # -------------------------- CODENJOY --------------------------
 
@@ -238,15 +210,8 @@ codenjoy() {
     file=$1
     comment $file "#C#" $CODENJOY
     comment $file "#!C#" $NOT_CODENJOY
-
-    # TODO to solve situation with multiple tags
-    if [ "x$CODENJOY" = "xtrue" ]; then
-        comment $file "#AC#" $BASIC_AUTH
-    else 
-        comment $file "#AC#" "false"
-    fi
 }
 
-eval_echo "codenjoy ./config/nginx/conf.d/codenjoy.conf"
+eval_echo "codenjoy ./config/nginx/conf.d/applications.conf"
 
-# --------------------------         --------------------------
+# -------------------------------------------------------------

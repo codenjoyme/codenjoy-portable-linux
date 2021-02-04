@@ -32,7 +32,7 @@ services:
           MAINTAINER_EMAIL: ${MAINTAINER_EMAIL}
      command: --spring.profiles.active=${SPRING_PROFILES} --context=/${BALANCER_CONTEXT} # --debug
      volumes:
-#       - ./materials/database:/app/database    #L#
+#       - ./materials/database:/app/database              #L#
        - ./logs/codenjoy:/app/logs
        - /etc/localtime:/etc/localtime:ro
 #     ports:                                              #P#
