@@ -22,10 +22,7 @@ services:
      image: nginx
      container_name: nginx
      volumes:
-       - ./config/nginx/domain.conf:/etc/nginx/domain.conf
-       - ./config/nginx/ssl.conf:/etc/nginx/ssl.conf
-       - ./config/nginx/nginx.conf:/etc/nginx/nginx.conf
-       - ./config/nginx/.htpasswd:/etc/nginx/.htpasswd
+       - ./config/nginx:/etc/nginx
        - ./ssl-cert:/usr/share/ca-certificates/extra
        - /etc/localtime:/etc/localtime:ro
      ports: 
