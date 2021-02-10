@@ -4,7 +4,7 @@ services:
    codenjoy_client_runner:
      image: apofig/codenjoy-client-runner:${CODENJOY_VERSION}
      container_name: codenjoy-client-runner
-     command: --spring.profiles.active=${SPRING_PROFILES} --context=/${CLIENT_RUNNER_CONTEXT} # --debug
+     command: --spring.profiles.active=${SPRING_PROFILES} --SERVICE_CONTEXT=/${CLIENT_RUNNER_CONTEXT} # --debug
      build:
        context: ./applications
        dockerfile: Dockerfile-client-runner
