@@ -51,4 +51,5 @@ services:
      depends_on:
        - codenjoy_server
      volumes:
-       - ./config/nginx/conf.d/codenjoy.conf:/etc/nginx/conf.d/codenjoy.conf
+       - ./config/nginx/conf.d/codenjoy/locations.conf:/etc/nginx/conf.d/codenjoy/locations.conf
+       - ./config/nginx/conf.d/codenjoy/upstreams.conf:/etc/nginx/conf.d/codenjoy/upstreams.conf

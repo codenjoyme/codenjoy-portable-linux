@@ -33,5 +33,7 @@ services:
    nginx:
      depends_on:
        - codenjoy_client_runner
-     volumes: 
-       - ./config/nginx/conf.d/codenjoy.conf:/etc/nginx/conf.d/codenjoy.conf
+     volumes:
+       - ./config/nginx/conf.d/client-runner/locations.conf:/etc/nginx/conf.d/client-runner/locations.conf
+       - ./config/nginx/conf.d/client-runner/upstreams.conf:/etc/nginx/conf.d/client-runner/upstreams.conf
+

@@ -67,5 +67,8 @@ services:
    nginx:
      depends_on:
        - codenjoy_balancer
-     volumes: 
-       - ./config/nginx/conf.d/codenjoy.conf:/etc/nginx/conf.d/codenjoy.conf
+     volumes:
+       - ./config/nginx/conf.d/balancer/locations.conf:/etc/nginx/conf.d/balancer/locations.conf
+       - ./config/nginx/conf.d/balancer/upstreams.conf:/etc/nginx/conf.d/balancer/upstreams.conf
+       - ./config/nginx/conf.d/balancer-frontend/locations.conf:/etc/nginx/conf.d/balancer-frontend/locations.conf
+       - ./config/nginx/conf.d/balancer-frontend/upstreams.conf:/etc/nginx/conf.d/balancer-frontend/upstreams.conf
