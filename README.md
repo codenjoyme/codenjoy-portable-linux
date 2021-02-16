@@ -107,6 +107,7 @@ docker-compose --version
     * `NODE_PATH=src/` please do not change it, I don't know what it is )
     * `GENERATE_SOURCEMAP=false` please do not change it, I don't know what it is )
     * `REACT_APP_API_SERVER=https://your-domain.io` Link to balancer backend server (to use `https` when `SSL=true`)
+    * `REACT_APP_GAME=bomberman` game to choose (please select only one same game here and in the `GAME` property)
     * `REACT_APP_EVENT_START=2020-03-01T07:00:00.000Z` game tournament start day/time
     * `REACT_APP_EVENT_END=2020-03-31T17:00:00.000Z` game tournament end day/time
     * `REACT_APP_EVENT_LINK=http://your-event.io` Link to event
