@@ -28,6 +28,7 @@ services:
          GAME_AI: ${CODENJOY_GAME_AI}
          LOG_DEBUG: "false"
          PAGE_MAIN:
+         PAGE_MAIN_UNAUTHORIZED: "true"
          PAGE_REGISTRATION:
          PAGE_HELP_LANGUAGE: ${PAGE_HELP_LANGUAGE}
          EMAIL_VERIFICATION: "false"
