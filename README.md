@@ -130,6 +130,9 @@ docker-compose --version
   * `CODENJOY_GAME_SAVE_AUTO=true` If you want to save all scores (backup) every 30 ticks. 
   * `CODENJOY_GAME_SAVE_LOAD_ON_START=true` If you want to load all scores from saves during server starting. 
   * `CODENJOY_XFRAMEALLOWEDHOSTS=domain.com` Domain ot IP of this server. 
+  * `CODENJOY_PAGE_MAIN_UNAUTHORIZED=true` If you allow access to the main page with 
+        the ability to view server games for an unregistered user please set `true` here, 
+        otherwise there will be a redirect to login    
 - build and start server by command (everytime when you committed new changes)
 ```
 sudo bash rebuild.sh
