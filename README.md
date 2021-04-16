@@ -115,6 +115,7 @@ docker-compose --version
     * `REACT_APP_GA_ID=UA-123456789-1` 
     * `REACT_APP_FB_PIXEL_ID=123456789012345` facebook pixel
     * `REACT_APP_IS_SECURE=true` please set true if `SSL=true`
+    * `REACT_APP_GAME_SCHEMA=http` http or https 
     * `REACT_APP_IS_UNAVAILABLE=false` please set true if application is unavaliable
     * `REACT_APP_EVENT_START_DATE=01.03.2020` game tournament start day (info page only)
     * `REACT_APP_EVENT_END_DATE=31.03.2020` game tournament end day (info page only)
