@@ -13,7 +13,6 @@ services:
           WAR_FILE: ./codenjoy-contest.war
           MAINTAINER_NAME: ${MAINTAINER_NAME}
           MAINTAINER_EMAIL: ${MAINTAINER_EMAIL}
-     command: --spring.profiles.active=${SPRING_PROFILES} --context=/${CODENJOY_CONTEXT} # --debug
      volumes:
 #       - ./materials/codenjoy/database:/app/database       #L#
        - ./logs/codenjoy:/app/logs
@@ -22,6 +21,8 @@ services:
 #       - "${CODENJOY_PORT}:8080"                           #P#
      restart: always
      environment:
+         SPRING_PROFILES_ACTIVE: ${SPRING_PROFILES}
+         CONTEXT: /${CODENJOY_CONTEXT}
          GAME_SAVE_AUTO: ${CODENJOY_GAME_SAVE_AUTO}
          GAME_SAVE_LOAD_ON_START: ${CODENJOY_GAME_SAVE_LOAD_ON_START}
          BOARD_SAVE_TICKS: 1
