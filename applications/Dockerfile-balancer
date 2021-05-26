@@ -1,9 +1,6 @@
 FROM java-workspace as codenjoy_balancer
 
 ARG WAR_FILE=codenjoy-balancer.war
-ARG SPRING_PROFILES=sqlite
-ARG APPLICATION_CONTEXT=codenjoy-balancer
-
 ARG MAINTAINER_NAME=User
 ARG MAINTAINER_EMAIL=user@email.com
 LABEL maintainer.name="${MAINTAINER_NAME}"
@@ -16,4 +13,3 @@ COPY ${WAR_FILE} /app/server.war
 WORKDIR /app
 
 ENTRYPOINT ["java","-jar","server.war"]
-CMD ["--spring.profiles.active=${SPRING_PROFILES}","--context=/${APPLICATION_CONTEXT}"]
