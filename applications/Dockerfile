@@ -33,6 +33,8 @@ RUN apt-get update \
  && git config --global user.name "${MAINTAINER_NAME}" \
  && git config --global user.email "${MAINTAINER_EMAIL}" \
  && cd /tmp \
- && git clone --branch ${REF} --recursive ${GIT_REPO} codenjoy
+ && git clone --recursive ${GIT_REPO} codenjoy \
+ && cd /tmp/codenjoy/CodingDojo \
+ && git checkout ${REF}
 
 # -----------------------------------------------------------------------
