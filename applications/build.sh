@@ -100,6 +100,9 @@ if [ "x$BUILD_SERVER" = "xtrue" ]; then
         # build games parent
         eval_echo "docker exec temp bash -c 'cd /tmp/codenjoy/CodingDojo/games && $MVNW clean install -N -DskipTests=$SKIP_TESTS' |& tee ./logs/codenjoy-deploy.log" ;
 
+        # build java client
+        eval_echo "docker exec temp bash -c 'cd /tmp/codenjoy/CodingDojo/clients/java && $MVNW clean install -DskipTests=$SKIP_TESTS' |& tee ./logs/codenjoy-deploy.log" ;
+
         # build engine
         eval_echo "docker exec temp bash -c 'cd /tmp/codenjoy/CodingDojo/games/engine && $MVNW clean install -DskipTests=$SKIP_TESTS' |& tee ./logs/codenjoy-deploy.log" ;
 
