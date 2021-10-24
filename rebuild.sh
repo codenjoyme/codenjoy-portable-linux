@@ -17,11 +17,6 @@ eval_echo() {
     eval $to_run
 }
 
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-echo "[93m"
-echo "Work in: $DIR"
-echo "[0m"
-
 eval_echo ". dir.sh"
 eval_echo ". config.sh"
 
