@@ -10,7 +10,7 @@ Other options:
 [how to run the server on Linux (simple version)](https://github.com/codenjoyme/codenjoy-portable-linux-lite.git#linux-portable-script-simple-version)
 
 I prepared to you this script, so you can run it on ubuntu server.
-The fastest way to run this one line and follow instructions (here `codenjoy` - is a folder):
+The fastest way to run this one line and follow instructions (here `codenjoy` - is a folder and `/srv` - is the place where it will be installed):
 ```
 sudo su -c "bash <(wget -qO- https://raw.githubusercontent.com/codenjoyme/codenjoy-portable-linux/master/install.sh) /srv codenjoy" root
 ```
