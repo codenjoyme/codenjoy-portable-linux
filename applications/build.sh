@@ -47,7 +47,7 @@ if [[ "$(docker images -q java-workspace 2> /dev/null)" == "" ]]; then
     echo "========================================================================================================================[0m" ;
 
     # prepare java-workspace image update system && set timezone
-    eval_echo "docker build --target java_workspace -t java-workspace -f Dockerfile ./ --build-arg TIMEZONE=${TIMEZONE} |& tee ./logs/java-workspace.log" ;
+    eval_echo "docker build --progress=plain --target java_workspace -t java-workspace -f Dockerfile ./ --build-arg TIMEZONE=${TIMEZONE} |& tee ./logs/java-workspace.log" ;
 else
     echo "[93mImage java-workspace already installed[0m" ;
 fi
@@ -59,7 +59,7 @@ if [[ "$(docker images -q codenjoy-source 2> /dev/null)" == "" ]]; then
     echo "========================================================================================================================[0m" ;
 
     # checkout and build project
-    eval_echo "docker build --target codenjoy_source -t codenjoy-source -f Dockerfile ./ --build-arg GIT_REPO=${GIT_REPO} --build-arg MAINTAINER_NAME=${MAINTAINER_NAME} --build-arg MAINTAINER_EMAIL=${MAINTAINER_EMAIL} --build-arg REF=${REVISION} |& tee ./logs/codenjoy-source.log" ;
+    eval_echo "docker build --progress=plain --target codenjoy_source -t codenjoy-source -f Dockerfile ./ --build-arg GIT_REPO=${GIT_REPO} --build-arg MAINTAINER_NAME=${MAINTAINER_NAME} --build-arg MAINTAINER_EMAIL=${MAINTAINER_EMAIL} --build-arg REF=${REVISION} |& tee ./logs/codenjoy-source.log" ;
 else
     echo "[93mImage codenjoy-source already installed[0m" ;
 fi
@@ -148,7 +148,7 @@ then
     # build dockerized-java-workspace
     if [[ "$(docker images -q dockerized-java-workspace 2> /dev/null)" == "" ]]; then
         # prepare dockerized-java-workspace
-        eval_echo "docker build --target dockerized_java_workspace -t dockerized-java-workspace -f Dockerfile-client-runner ./ |& tee ./logs/dockerized-java-workspace.log" ;
+        eval_echo "docker build --progress=plain --target dockerized_java_workspace -t dockerized-java-workspace -f Dockerfile-client-runner ./ |& tee ./logs/dockerized-java-workspace.log" ;
     else
         echo "[93mImage dockerized-java-workspace already installed[0m" ;
     fi
