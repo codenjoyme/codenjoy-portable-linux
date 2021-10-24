@@ -24,9 +24,9 @@ fi
 base=${1:=/srv}
 folder=${2:=codenjoy}
 
-eval_echo "cd $base & ls -la"
+eval_echo "cd $base && ls -la"
 eval_echo "git clone https://github.com/codenjoyme/codenjoy-portable-linux.git $folder"
-eval_echo "cd ./$folder & ls -la"
+eval_echo "cd ./$folder && ls -la"
 
 eval_echo ". env-update.sh"
 eval_echo ". rebuild.sh"
