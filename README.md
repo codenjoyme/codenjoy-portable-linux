@@ -42,7 +42,7 @@ docker-compose --version
   * `CODENJOY_CONTEXT=codenjoy-contest` context of codenjoy server application
   * `BALANCER_CONTEXT=codenjoy-balancer` context of codenjoy builder application
   * `CLIENT_RUNNER_CONTEXT=codenjoy-client-runner` context of codenjoy websocket client runner application
-  * `GAME=tetris,mollymage,snake` games to build
+  * `GAME=tetris,mollymage,knibert` games to build
     * comma separated for several games.
     * if `ALL` - all games
   * `SPRING_PROFILES=postgres,debug` spring profiles, comma separated
