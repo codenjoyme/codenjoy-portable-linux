@@ -33,7 +33,7 @@ docker-compose --version
   * `BUILD_BALANCER=false` build balancer sources
   * `BUILD_CLIENT_RUNNER=false` build websocket client runner sources
   * `TIMEZONE=Europe/Kiev` your timezone inside docker containers (for valid time in logs)
-  * `CODENJOY_VERSION=1.1.1` version of docker images  that will be after build
+  * `CODENJOY_VERSION=1.1.2` version of docker images  that will be after build
   * `GIT_REPO=https://github.com/codenjoyme/codenjoy.git` git repository you want to build
   * `MAINTAINER_NAME=FirstName_LastName` Maintainer name (used inside git and docker containers)
   * `MAINTAINER_EMAIL=user@email.com` Maintainer email (used inside git and docker containers)
